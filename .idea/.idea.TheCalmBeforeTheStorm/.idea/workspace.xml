@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="03221122-db36-4fcb-9976-94694beaad2d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-    </list>
+    <list default="true" id="03221122-db36-4fcb-9976-94694beaad2d" name="Changes" comment="added basic movment and added floor to the scene" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="UPDATE_TYPE" value="REBASE" />
+    <option name="RESET_MODE" value="SOFT" />
   </component>
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="ecafd778-7395-488e-86c4-067834d4b02d" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/UnityProjects/TheCalmBeforeTheStorm/Assets/Materials/Floor.mat.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/UnityProjects/TheCalmBeforeTheStorm/Assets/Materials/Floor.mat.meta" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -24,16 +26,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="D:\unity\unity\2022.3.42f1\Editor\Unity.exe" />
@@ -75,7 +77,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1725867883972</updated>
-      <workItem from="1725867907032" duration="3886000" />
+      <workItem from="1725867907032" duration="6330000" />
     </task>
     <task id="LOCAL-00001" summary="Inital commit">
       <created>1725868343797</created>
@@ -98,7 +100,56 @@
       <option name="project" value="LOCAL" />
       <updated>1725868774768</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added gitignore file">
+      <created>1725872208386</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1725872208386</updated>
+    </task>
+    <task id="LOCAL-00005" summary="initalized the gitignore file">
+      <created>1725872342553</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1725872342553</updated>
+    </task>
+    <task id="LOCAL-00006" summary="initalized the gitignore file">
+      <created>1725872413554</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1725872413554</updated>
+    </task>
+    <task id="LOCAL-00007" summary="added the unversioned files">
+      <created>1725872438580</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1725872438580</updated>
+    </task>
+    <task id="LOCAL-00008" summary="changed gitignore file">
+      <created>1725873677555</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1725873677555</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Making the player's basic movment and added the floor">
+      <created>1725900784663</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1725900784663</updated>
+    </task>
+    <task id="LOCAL-00010" summary="added basic movment and added floor to the scene">
+      <created>1725901038169</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1725901038169</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,6 +208,12 @@
     <MESSAGE value="Inital commit" />
     <MESSAGE value="Second commit" />
     <MESSAGE value="Third commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Third commit" />
+    <MESSAGE value="added gitignore file" />
+    <MESSAGE value="initalized the gitignore file" />
+    <MESSAGE value="added the unversioned files" />
+    <MESSAGE value="changed gitignore file" />
+    <MESSAGE value="Making the player's basic movment and added the floor" />
+    <MESSAGE value="added basic movment and added floor to the scene" />
+    <option name="LAST_COMMIT_MESSAGE" value="added basic movment and added floor to the scene" />
   </component>
 </project>
