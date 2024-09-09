@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         PlayerRB = GetComponent<Rigidbody2D>();
+        Application.targetFrameRate = 120;
+
     }
 
     // Update is called once per frame
@@ -31,22 +33,22 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            PlayerRB.AddForce(-transform.right * MovingSpeedF);
+            PlayerRB.AddForce(-transform.right * MovingSpeedF*Time.deltaTime*50);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            PlayerRB.AddForce(-transform.up * MovingSpeedF);
+            PlayerRB.AddForce(-transform.up * MovingSpeedF*Time.deltaTime*50);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            PlayerRB.AddForce(transform.right * MovingSpeedF);
+            PlayerRB.AddForce(transform.right * MovingSpeedF*Time.deltaTime*50);
         }
 
         if (Input.GetKey(KeyCode.W))
         {
-            PlayerRB.AddForce(transform.up * MovingSpeedF);
+            PlayerRB.AddForce(transform.up * MovingSpeedF*Time.deltaTime*50);
         }
     }
 }
