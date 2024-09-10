@@ -7,16 +7,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float MovingSpeedF;
 
     //[SerializeField] private float JumpForceF;
-    [SerializeField] private GameObject BulletPrefabG;
-    [SerializeField] private float BulletShootingPowerF;
-
 
     private Rigidbody2D PlayerRB;
     private bool IsShiftPressedB = false;
     private bool IsGunPickedUpB = true;
-    private bool IsShootingB = false;
 
-    private bool IsPlayerLookingLeft;
+    public bool IsPlayerLookingLeft;
     //private bool IsJumpFinished = true;
 
     // Start is called before the first frame update
@@ -48,17 +44,7 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.localScale = transformLocalScaleV3;
-
-
-        if (Input.GetKey(KeyCode.Space) && !IsShootingB)
-        {
-            StartCoroutine(Shoot(BulletPrefabG.GetComponent<BulletsController>().FireRateI));
-            IsShootingB = true;
-        }
-        else
-        {
-            IsShootingB = false;
-        }
+        
     }
 
 
@@ -79,40 +65,6 @@ public class PlayerController : MonoBehaviour
         PlayerRB.velocity = playerRbVelocityV2;
         IsJumpFinished = true;
     }*/
-
-    IEnumerator Shoot(float fireRate)
-    {
-        int framesPerBulletI=0;
-         switch (fireRate)
-        {
-            case 1:
-                framesPerBulletI = 560;
-                break;
-            case 2:
-                framesPerBulletI = 270;
-                break;
-            case 3:
-                framesPerBulletI = 180;
-                break;
-            case 4: framesPerBulletI = 90;
-                break;
-        }
-        
-        int framesPassedI = 0;
-        while (Input.GetKey(KeyCode.Space) && IsGunPickedUpB)
-        {
-            float result = framesPassedI % framesPerBulletI;
-            if (result ==0)
-            {
-                GameObject bullet;
-                bullet = Instantiate(BulletPrefabG, transform.GetChild(0).transform.position,
-                    Quaternion.Euler(0, 0, Random.Range(-10, 10)));
-                bullet.GetComponent<BulletsController>().IsPlayerLookingLeft = IsPlayerLookingLeft;
-            }
-            framesPassedI++;
-            yield return null;
-        }
-    }
 
     void BasicMovment()
     {

@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3351441914874823285}
   - component: {fileID: 1104867858413631228}
+  - component: {fileID: 3549860285869448444}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,3 +85,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3549860285869448444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888156653463527303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b0de1d64f824d4fb59fc8748f61c24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AccuracyI: 5
+  FireRateI: 0
+  BulletPrefabG: {fileID: 1648255324117529464, guid: 382acbe86417397468c6e660c018635b, type: 3}
+  CartridgeG: {fileID: 1648255324117529464, guid: 026e624105e2ed04da01f5ff5bcd45aa, type: 3}
+  ThisGunType: 1

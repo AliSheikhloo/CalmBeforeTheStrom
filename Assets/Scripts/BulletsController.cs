@@ -5,26 +5,27 @@ using UnityEngine;
 public class BulletsController : MonoBehaviour
 {
     [SerializeField] private float BulletShootingPowerF;
-
-    public int FireRateI;
-    public bool IsPlayerLookingLeft;
+    [SerializeField] private bool IsCartridge=false;
     // Start is called before the first frame update
     void Start()
     {
-        int mirrorI;
-        if (IsPlayerLookingLeft)
+        if (!IsCartridge)
         {
-            mirrorI = -1;
-        }
-        else
-        {
-            mirrorI = 1;
-        }
+            int mirrorI;
+            if (GameObject.FindWithTag("Player").GetComponent<PlayerController>().IsPlayerLookingLeft)
+            {
+                mirrorI = -1;
+            }
+            else
+            {
+                mirrorI = 1;
+            }
 
-        Vector3 transformLocalScale = transform.localScale;
-        transformLocalScale.x *= mirrorI;
-        transform.localScale = transformLocalScale;
-        GetComponent<Rigidbody2D>().AddForce(transform.right*BulletShootingPowerF*mirrorI,ForceMode2D.Impulse);
+            Vector3 transformLocalScale = transform.localScale;
+            transformLocalScale.x *= mirrorI;
+            transform.localScale = transformLocalScale;
+            GetComponent<Rigidbody2D>().AddForce(transform.right * BulletShootingPowerF * mirrorI, ForceMode2D.Impulse);
+        }
         StartCoroutine(DestroyBullet());
     }
 
