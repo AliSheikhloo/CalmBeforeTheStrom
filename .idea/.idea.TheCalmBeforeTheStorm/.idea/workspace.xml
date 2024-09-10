@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="03221122-db36-4fcb-9976-94694beaad2d" name="Changes" comment="deleted the test script">
+    <list default="true" id="03221122-db36-4fcb-9976-94694beaad2d" name="Changes" comment="added a sample sprite for player and did some stuff for player movment">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheCalmBeforeTheStorm/.idea/shelf/Uncommitted_changes_before_Update_at_9_9_2024_9_23_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheCalmBeforeTheStorm/.idea/shelf/Uncommitted_changes_before_Update_at_9_9_2024_9_23_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TheCalmBeforeTheStorm/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheCalmBeforeTheStorm/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +20,7 @@
     <option name="defaultAccountId" value="ecafd778-7395-488e-86c4-067834d4b02d" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/UnityProjects/TheCalmBeforeTheStorm/Assets/Materials/Floor.mat.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/UnityProjects/TheCalmBeforeTheStorm/Assets/Materials/Floor.mat.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GunController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -81,7 +82,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1725867883972</updated>
-      <workItem from="1725867907032" duration="10581000" />
+      <workItem from="1725867907032" duration="11318000" />
+      <workItem from="1725957837181" duration="6584000" />
     </task>
     <task id="LOCAL-00001" summary="Inital commit">
       <created>1725868343797</created>
@@ -167,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1725902283200</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="added a sample sprite for player and did some stuff for player movment">
+      <created>1725907175422</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1725907175422</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,6 +242,7 @@
     <MESSAGE value="Making the player's basic movment and added the floor" />
     <MESSAGE value="added basic movment and added floor to the scene" />
     <MESSAGE value="deleted the test script" />
-    <option name="LAST_COMMIT_MESSAGE" value="deleted the test script" />
+    <MESSAGE value="added a sample sprite for player and did some stuff for player movment" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a sample sprite for player and did some stuff for player movment" />
   </component>
 </project>
