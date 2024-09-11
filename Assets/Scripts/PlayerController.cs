@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,7 +27,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        BasicMovment();
 
         //Player facing system
         Vector3 transformLocalScaleV3 = transform.localScale;
@@ -48,6 +48,11 @@ public class PlayerController : MonoBehaviour
 
         transform.localScale = transformLocalScaleV3;
         
+    }
+
+    private void FixedUpdate()
+    {
+        BasicMovment();
     }
 
 

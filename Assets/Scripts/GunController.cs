@@ -76,14 +76,13 @@ public class GunController : MonoBehaviour
         {
             InstantiateBullet();
             ThrowCartridge();
-            for (int i = 0; i < 5; i++)
-            {
-                yield return null;
-            }
+            yield return new WaitForSeconds(.1f);
             if (_PlayerController.IsShiftPressedB)
             {
                 break;
             }
+
+            yield return null;
         }
         _PlayerController.IsShooting = false;
     }

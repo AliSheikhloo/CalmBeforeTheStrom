@@ -359,6 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovingSpeedF: 30
+  IsShiftPressedB: 0
   IsShooting: 0
   IsPlayerLookingLeft: 0
 --- !u!50 &794979875
@@ -470,7 +471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3351441914874823285, guid: 4971432505e1fcd42b26ae8fbbc219f9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.035
       objectReference: {fileID: 0}
     - target: {fileID: 3351441914874823285, guid: 4971432505e1fcd42b26ae8fbbc219f9, type: 3}
       propertyPath: m_LocalRotation.w
