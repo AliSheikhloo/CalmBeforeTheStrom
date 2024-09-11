@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public MainManager.GunTypeE PlayerGun=MainManager.GunTypeE.Pistol;
     [SerializeField] private float MovingSpeedF;
 
     //[SerializeField] private float JumpForceF;
@@ -27,55 +28,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //Player facing system
-        Vector3 transformLocalScaleV3 = transform.localScale;
-        if (PlayerRB.velocity.x != 0 && !IsShooting)
-        {
-            if (PlayerRB.velocity.x > 0)
-            {
-                transformLocalScaleV3.x = -1;
-                IsPlayerLookingLeft = false;
-            }
-            else
-            {
-                transformLocalScaleV3.x = 1;
-                IsPlayerLookingLeft = true;
-
-            }
-        }
-        
-
-        transform.localScale = transformLocalScaleV3;
-        
-    }
-
-    private void FixedUpdate()
-    {
         BasicMovment();
     }
+    
 
-
-    /*
-     Jump isnt used for now
-     IEnumerator Jump()
-    {
-        Vector3 playerPositionV3 = transform.position;
-        PlayerRB.AddForce(transform.up*JumpForceF,ForceMode2D.Impulse);
-        while(transform.position.y>playerPositionV3.y-.001f)
-        {
-            PlayerRB.AddForce(-transform.up*JumpForceF*4);
-            yield return null;
-        }
-
-        Vector2 playerRbVelocityV2 = PlayerRB.velocity;
-        playerRbVelocityV2.y = 0;
-        PlayerRB.velocity = playerRbVelocityV2;
-        IsJumpFinished = true;
-    }*/
-
+   
     void BasicMovment()
     {
+        Vector3 transformLocalScaleV3 = transform.localScale;
+
         //Basic movment of player
         if (Input.GetKeyDown(KeyCode.LeftShift) && !IsShiftPressedB)
         {
@@ -92,6 +53,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             PlayerRB.AddForce(-transform.right * MovingSpeedF * Time.deltaTime * 50);
+            if (!IsShooting)
+            {
+                transformLocalScaleV3.x = 1;
+                IsPlayerLookingLeft = true;
+            }
         }
 
         if (Input.GetKey(KeyCode.S))
@@ -102,18 +68,19 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             PlayerRB.AddForce(transform.right * MovingSpeedF * Time.deltaTime * 50);
+            if (!IsShooting)
+            {
+                transformLocalScaleV3.x = -1;
+                IsPlayerLookingLeft = false;
+            }
         }
 
         if (Input.GetKey(KeyCode.W))
         {
             PlayerRB.AddForce(transform.up * MovingSpeedF * Time.deltaTime * 50);
         }
-
-        /*if (Input.GetKeyDown(KeyCode.Space)&& IsJumpFinished)
-        {
-            StartCoroutine(Jump());
-            IsJumpFinished = false;
-        }*/
+        
+        transform.localScale = transformLocalScaleV3;
 
     }
 }
