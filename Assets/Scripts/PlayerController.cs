@@ -9,9 +9,9 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] private float JumpForceF;
 
     private Rigidbody2D PlayerRB;
-    private bool IsShiftPressedB = false;
+    public bool IsShiftPressedB = false;
     private bool IsGunPickedUpB = true;
-
+    public bool IsShooting = false;
     public bool IsPlayerLookingLeft;
     //private bool IsJumpFinished = true;
 
@@ -30,18 +30,21 @@ public class PlayerController : MonoBehaviour
 
         //Player facing system
         Vector3 transformLocalScaleV3 = transform.localScale;
-
-        if (PlayerRB.velocity.x > 0)
+        if (PlayerRB.velocity.x != 0 && !IsShooting)
         {
-            transformLocalScaleV3.x = -1;
-            IsPlayerLookingLeft = false;
-        }
-        else
-        {
-            transformLocalScaleV3.x = 1;
-            IsPlayerLookingLeft = true;
+            if (PlayerRB.velocity.x > 0)
+            {
+                transformLocalScaleV3.x = -1;
+                IsPlayerLookingLeft = false;
+            }
+            else
+            {
+                transformLocalScaleV3.x = 1;
+                IsPlayerLookingLeft = true;
 
+            }
         }
+        
 
         transform.localScale = transformLocalScaleV3;
         

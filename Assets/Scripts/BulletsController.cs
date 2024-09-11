@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class BulletsController : MonoBehaviour
 {
+    private PlayerController _playerController;
     [SerializeField] private float BulletShootingPowerF;
     [SerializeField] private bool IsCartridge=false;
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         if (!IsCartridge)
         {
@@ -41,6 +42,6 @@ public class BulletsController : MonoBehaviour
         {
             yield return null;
         }
-        Destroy(gameObject);
+        Pooling.instance.BackObjectToRepository(gameObject);
     }
 }

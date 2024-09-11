@@ -359,6 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovingSpeedF: 30
+  IsShooting: 0
   IsPlayerLookingLeft: 0
 --- !u!50 &794979875
 Rigidbody2D:
@@ -387,6 +388,66 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &908674411
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 908674412}
+  - component: {fileID: 908674413}
+  m_Layer: 0
+  m_Name: PoolingSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &908674412
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908674411}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &908674413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908674411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09e107304986be542b24bb3c8463b9bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PistolBullet:
+    prefab: {fileID: 1648255324117529464, guid: 2a07ae3fd007b5e49beddc3ff483d39b, type: 3}
+    Count: 50
+    Objects: []
+  RifleBullet:
+    prefab: {fileID: 1648255324117529464, guid: 382acbe86417397468c6e660c018635b, type: 3}
+    Count: 50
+    Objects: []
+  ShotgunBullet:
+    prefab: {fileID: 1648255324117529464, guid: 36910dbaf20f4464bb496e53e0e99c7d, type: 3}
+    Count: 50
+    Objects: []
+  Cartridge:
+    prefab: {fileID: 1648255324117529464, guid: 026e624105e2ed04da01f5ff5bcd45aa, type: 3}
+    Count: 50
+    Objects: []
 --- !u!1001 &1317368027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -439,6 +500,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3549860285869448444, guid: 4971432505e1fcd42b26ae8fbbc219f9, type: 3}
+      propertyPath: AccuracyI
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549860285869448444, guid: 4971432505e1fcd42b26ae8fbbc219f9, type: 3}
+      propertyPath: ThisGunType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549860285869448444, guid: 4971432505e1fcd42b26ae8fbbc219f9, type: 3}
+      propertyPath: BulletPrefabS
+      value: RifleBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549860285869448444, guid: 4971432505e1fcd42b26ae8fbbc219f9, type: 3}
+      propertyPath: _PlayerController
+      value: 
+      objectReference: {fileID: 794979874}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -623,3 +700,4 @@ SceneRoots:
   - {fileID: 794979873}
   - {fileID: 1728402519}
   - {fileID: 1602581771}
+  - {fileID: 908674412}

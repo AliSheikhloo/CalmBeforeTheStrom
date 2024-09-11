@@ -6,13 +6,13 @@ using Random = UnityEngine.Random;
 
 public class GunController : MonoBehaviour
 {
+    [SerializeField] PlayerController _PlayerController;
     public int AccuracyI;
     public int FireRateI;
 
-    [SerializeField] private GameObject BulletPrefabG;
-    [SerializeField] private GameObject CartridgeG;
-    private bool IsGunLoaded=true;
-    
+    [SerializeField] private string BulletPrefabS;
+    private bool IsGunLoaded = true;
+
     public enum GunTypeE
     {
         Pistol,
@@ -21,24 +21,26 @@ public class GunController : MonoBehaviour
     }
 
     public GunTypeE ThisGunType;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    }
+    public void Shooting()
     {
-        if (Input.GetKeyDown(KeyCode.Space)&& IsGunLoaded)
+        if (_PlayerController.IsShiftPressedB) return;
+
+        if (Input.GetKeyDown(KeyCode.Space) && IsGunLoaded)
         {
+
             switch (ThisGunType)
             {
-                case  GunTypeE.Pistol:
+                case GunTypeE.Pistol:
                     StartCoroutine(FirePistol());
                     break;
                 case GunTypeE.Rifle:
+                    _PlayerController.IsShooting = true;
                     StartCoroutine(FireRifle());
                     break;
                 case GunTypeE.Shotgun:
@@ -47,20 +49,24 @@ public class GunController : MonoBehaviour
                     break;
 
             }
-            
+
         }
+
+
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        Shooting();
     }
 
     IEnumerator FirePistol()
     {
-        while (Input.GetKey(KeyCode.Space)){
-            InstantiateBullet();
-            ThrowCartridge();
-            while (Input.GetKey(KeyCode.Space))
-            {
-                yield return null;
-            }
-        }
+
+        InstantiateBullet();
+        ThrowCartridge();
+        yield return null;
+
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
@@ -74,7 +80,12 @@ public class GunController : MonoBehaviour
             {
                 yield return null;
             }
+            if (_PlayerController.IsShiftPressedB)
+            {
+                break;
+            }
         }
+        _PlayerController.IsShooting = false;
     }
 
     IEnumerator FireShotgun()
@@ -87,7 +98,7 @@ public class GunController : MonoBehaviour
             }
             yield return null;
         }
-        for (int i = 0; i < 800*Time.deltaTime; i++)
+        for (int i = 0; i < 800 * Time.deltaTime; i++)
         {
             yield return null;
         }
@@ -97,13 +108,22 @@ public class GunController : MonoBehaviour
 
     void InstantiateBullet()
     {
-        Instantiate(BulletPrefabG, transform.position, Quaternion.Euler(0, 0, Random.Range(-AccuracyI,AccuracyI)));
+        GameObject Bullet = Pooling.instance.ReturnObject(BulletPrefabS);
+        Bullet.transform.SetParent(null);
+        Bullet.transform.position = transform.position;
+        Bullet.transform.rotation = Quaternion.Euler(0, 0, Random.Range(-AccuracyI, AccuracyI));
+        Bullet.SetActive(true);
     }
     void ThrowCartridge()
     {
         print("cartridge");
-        GameObject cartridge;
-        cartridge=Instantiate(CartridgeG, transform.position, Quaternion.Euler(0,0,Random.Range(80,100)));
-        cartridge.GetComponent<Rigidbody2D>().AddForce(cartridge.transform.up * 20,ForceMode2D.Impulse);
+
+        GameObject cartridge = Pooling.instance.ReturnObject("Cartridge");
+        cartridge.SetActive(true);
+        cartridge.transform.SetParent(null);
+        cartridge.transform.position = transform.position;
+        cartridge.transform.rotation = Quaternion.Euler(0, 0, Random.Range(80, 100));
+        cartridge.GetComponent<Rigidbody2D>().AddForce(cartridge.transform.up * 20, ForceMode2D.Impulse);
+
     }
 }
