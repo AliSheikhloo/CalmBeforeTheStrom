@@ -1,222 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="03221122-db36-4fcb-9976-94694beaad2d" name="Changes" comment="changed fire shooting system and added some more prefabs and added cartridge throwing system">
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Documentation.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Documentation/documentation.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Documentation/documentation.md.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Documentation/documentation.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Documentation/documentation.pdf.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Documentation/release-notes.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Documentation/release-notes.md.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Harmony.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Harmony/HarmonyLicense.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Harmony/HarmonyLicense.txt.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Harmony/net48.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Harmony/net48/0Harmony.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Harmony/net48/0Harmony.dll.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Harmony/net48/0Harmony.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Harmony/net48/0Harmony.xml.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/ImmersiveVrToolsCommon.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/ImmersiveVrToolsCommon/ImmersiveVRTools.Common.Editor.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/ImmersiveVrToolsCommon/ImmersiveVRTools.Common.Editor.dll.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/ImmersiveVrToolsCommon/ImmersiveVRTools.Common.Runtime.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/ImmersiveVrToolsCommon/ImmersiveVRTools.Common.Runtime.dll.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/ImmersiveVrToolsCommon/ImmersiveVRToolsCommonLicense.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/ImmersiveVrToolsCommon/ImmersiveVRToolsCommonLicense.txt.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2019+.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2019+/Microsoft.CodeAnalysis.CSharp.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2019+/Microsoft.CodeAnalysis.CSharp.dll.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2019+/Microsoft.CodeAnalysis.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2019+/Microsoft.CodeAnalysis.dll.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2019+/RoslynLicense.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2019+/RoslynLicense.txt.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2019+/System.Collections.Immutable.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2019+/System.Collections.Immutable.dll.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2019+/System.Reflection.Metadata.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2019+/System.Reflection.Metadata.dll.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2019+/System.Threading.Tasks.Extensions.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2019+/System.Threading.Tasks.Extensions.dll.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+/Microsoft.CodeAnalysis.CSharp.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+/Microsoft.CodeAnalysis.CSharp.dll.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+/Microsoft.CodeAnalysis.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+/Microsoft.CodeAnalysis.dll.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+/RoslynLicense.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+/RoslynLicense.txt.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.FSR.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.FSR.dll.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Collections.Immutable.dll.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Reflection.Metadata.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Reflection.Metadata.dll.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Reflection.Metadata.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Reflection.Metadata.xml.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Runtime.CompilerServices.Unsafe.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Runtime.CompilerServices.Unsafe.dll.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Runtime.CompilerServices.Unsafe.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Runtime.CompilerServices.Unsafe.xml.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Threading.Tasks.Extensions.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/2021+/System.Threading.Tasks.Extensions.dll.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/Microsoft.CSharp.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/Microsoft.CSharp.dll.IMPORTANT.txt.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/Microsoft.CSharp.dll.IMPORTANT.txt.txt.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Plugins/Roslyn/Microsoft.CSharp.dll.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Samples.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Samples/Basic.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Samples/Basic/Point.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Samples/Basic/Point/Point Surface.shader" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Samples/Basic/Point/Point Surface.shader.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Samples/Basic/Point/Point URP.shadergraph" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Samples/Basic/Point/Point URP.shadergraph.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Samples/Basic/Point/Point.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Samples/Basic/Point/Point.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Samples/Basic/Point/Point.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Samples/Basic/Point/Point.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Samples/Basic/Scenes.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Samples/Basic/Scenes/ExampleScene.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Samples/Basic/Scenes/ExampleScene.unity.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Samples/Basic/Scripts.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Samples/Basic/Scripts/FunctionLibrary.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Samples/Basic/Scripts/FunctionLibrary.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Samples/Basic/Scripts/Graph.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Samples/Basic/Scripts/Graph.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/AssemblyPostProcess.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/AssemblyPostProcess/AddInternalsVisibleToForAllUserAssembliesPostProcess.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/AssemblyPostProcess/AddInternalsVisibleToForAllUserAssembliesPostProcess.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/BuilderPatternFunctionsRewriter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/BuilderPatternFunctionsRewriter.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/ConstructorRewriter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/ConstructorRewriter.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/CreateNewFieldInitMethodRewriter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/CreateNewFieldInitMethodRewriter.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/FastScriptReloadCodeRewriterBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/FastScriptReloadCodeRewriterBase.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/FieldsWalker.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/FieldsWalker.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/HotReloadCompliantRewriter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/HotReloadCompliantRewriter.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/ManualUserDefinedScriptOverridesRewriter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/ManualUserDefinedScriptOverridesRewriter.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/NewFieldDeclaration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/NewFieldDeclaration.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/NewFieldsRewriter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/NewFieldsRewriter.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/RedundantTypeNameQualifierRewriter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/RedundantTypeNameQualifierRewriter.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/RoslynUtils.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/RoslynUtils.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/ThisAssignmentRewriter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/ThisAssignmentRewriter.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/ThisCallRewriter.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/ThisCallRewriter.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/ThisRewriterBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/ThisRewriterBase.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/DotnetExeCompilator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/DotnetExeCompilator.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/DynamicAssemblyCompiler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/DynamicAssemblyCompiler.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/DynamicCompilationBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/DynamicCompilationBase.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/McsExeDynamicCompilation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/McsExeDynamicCompilation.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/PatchMcsArgsGeneration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/PatchMcsArgsGeneration.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/ScriptGenerationOverrides.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/ScriptGenerationOverrides/ScriptGenerationOverridesManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/ScriptGenerationOverrides/ScriptGenerationOverridesManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/CustomFileWatcher.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/CustomFileWatcher.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/FastScriptReload.Editor.asmdef" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/FastScriptReload.Editor.asmdef.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/FastScriptReloadManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/FastScriptReloadManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/FastScriptReloadWelcomeScreen.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/FastScriptReloadWelcomeScreen.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/FileWatcherSetupEntry.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/FileWatcherSetupEntry.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/GUI.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/GUI/ProjectWindowReloadStatusIndicatorDrawer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/GUI/ProjectWindowReloadStatusIndicatorDrawer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/NewFields.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/NewFields/NewFieldsRendererDefaultEditorPatch.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/NewFields/NewFieldsRendererDefaultEditorPatch.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Runtime.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Runtime/AssemblyChangesLoader.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Runtime/AssemblyChangesLoader.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Runtime/AssemblyChangesLoaderResolver.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Runtime/AssemblyChangesLoaderResolver.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Runtime/DetourCrashHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Runtime/DetourCrashHandler.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Runtime/FastScriptReload.Runtime.asmdef" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Runtime/FastScriptReload.Runtime.asmdef.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Runtime/LoggerScopedInitializer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Runtime/LoggerScopedInitializer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Runtime/ProjectTypeCache.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Runtime/ProjectTypeCache.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Runtime/TemporaryNewFieldValues.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Runtime/TemporaryNewFieldValues.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Editor.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Editor/FastScriptReload.Tests.Editor.asmdef" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Editor/FastScriptReload.Tests.Editor.asmdef.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Editor/Integration.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Editor/Integration/CodePatterns.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Editor/Integration/CodePatterns/AccessingIdentifierNamedSameAsMethodTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Editor/Integration/CodePatterns/AccessingIdentifierNamedSameAsMethodTest.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Editor/Integration/CodePatterns/AccessingNewFieldsAddedAtRuntimeSameNameAsStaticClassFieldTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Editor/Integration/CodePatterns/AccessingNewFieldsAddedAtRuntimeSameNameAsStaticClassFieldTest.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Editor/Integration/CodePatterns/CompileWithRedirectTestBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Editor/Integration/CodePatterns/CompileWithRedirectTestBase.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Editor/Integration/CodePatterns/MethodAccessingNestedEnumTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Editor/Integration/CodePatterns/MethodAccessingNestedEnumTest.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Editor/Integration/CodePatterns/NewFieldInitDictionariesWithLocalFunctionTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Editor/Integration/CodePatterns/NewFieldInitDictionariesWithLocalFunctionTest.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Runtime.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Runtime/FastScriptReload.Tests.Runtime.asmdef" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Runtime/FastScriptReload.Tests.Runtime.asmdef.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Runtime/Integration.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Runtime/Integration/CodePatterns.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Runtime/Integration/CodePatterns/AccessingIdentifierNamedSameAsMethod.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Runtime/Integration/CodePatterns/AccessingIdentifierNamedSameAsMethod.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Runtime/Integration/CodePatterns/AccessingNewFieldsAddedAtRuntimeSameNameAsStaticClassField.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Runtime/Integration/CodePatterns/AccessingNewFieldsAddedAtRuntimeSameNameAsStaticClassField.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Runtime/Integration/CodePatterns/MethodAccessingNestedEnum.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Runtime/Integration/CodePatterns/MethodAccessingNestedEnum.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Runtime/Integration/CodePatterns/NewFieldInitDictionariesWithLocalFunction.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Runtime/Integration/CodePatterns/NewFieldInitDictionariesWithLocalFunction.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Runtime/Integration/CodePatterns/TestDetourConfirmation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FastScriptReload/Tests/Runtime/Integration/CodePatterns/TestDetourConfirmation.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/bullets.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/bullets/Cartridge.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/bullets/Cartridge.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/bullets/PistolBullet.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/bullets/RifleBullet.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/bullets/ShotgunBullet.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/bullets/ShotgunBullet.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/gunss.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/gunss/Rifle.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/gunss/Rifle.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/gunss/Shotgun.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/gunss/Shotgun.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="03221122-db36-4fcb-9976-94694beaad2d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TheCalmBeforeTheStorm/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheCalmBeforeTheStorm/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/bullets/RifleBullet.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Bullet.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/bullets/PistolBullet.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Gun.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/gunss/Pistol.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Gun.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/gunss/Pistol.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BulletsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BulletsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GunController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GunController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,9 +19,13 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/BuilderPatternFunctionsRewriter.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/UnityProjects/TheCalmBeforeTheStorm/Assets/Prefabs/Gun.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/UnityProjects/TheCalmBeforeTheStorm/Assets/Scripts/BulletsController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/UnityProjects/TheCalmBeforeTheStorm/Assets/Scripts/BulletsController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/UnityProjects/TheCalmBeforeTheStorm/Assets/Scripts/GunController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GunController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/UnityProjects/TheCalmBeforeTheStorm/Assets/Scripts/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Pooling.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />

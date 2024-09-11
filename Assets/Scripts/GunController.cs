@@ -108,6 +108,7 @@ public class GunController : MonoBehaviour
 
     void InstantiateBullet()
     {
+        
         GameObject Bullet = Pooling.instance.ReturnObject(BulletPrefabS);
         Bullet.transform.SetParent(null);
         Bullet.transform.position = transform.position;
@@ -119,10 +120,10 @@ public class GunController : MonoBehaviour
         print("cartridge");
 
         GameObject cartridge = Pooling.instance.ReturnObject("Cartridge");
-        cartridge.SetActive(true);
         cartridge.transform.SetParent(null);
         cartridge.transform.position = transform.position;
-        cartridge.transform.rotation = Quaternion.Euler(0, 0, Random.Range(80, 100));
+        cartridge.transform.rotation = Quaternion.Euler(0, 0, Random.Range(-10, 10));
+        cartridge.SetActive(true);
         cartridge.GetComponent<Rigidbody2D>().AddForce(cartridge.transform.up * 20, ForceMode2D.Impulse);
 
     }
