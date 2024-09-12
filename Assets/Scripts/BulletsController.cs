@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,16 @@ public class BulletsController : MonoBehaviour
     private PlayerController _playerController;
     [SerializeField] private float BulletShootingPowerF;
     [SerializeField] private bool IsCartridge=false;
+
+    public Vector2 InitalPosV3;
+    private bool IsActive = false;
+    private Rigidbody2D Rb;
     // Start is called before the first frame update
     void OnEnable()
     {
+        IsActive = true;
+        Rb = GetComponent<Rigidbody2D>();
+        InitalPosV3 = GameObject.Find("Player").transform.position;
         if (!IsCartridge)
         {
             int mirrorI;
@@ -33,7 +41,24 @@ public class BulletsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (transform.position.y < InitalPosV3.y - .5f)
+        {
+            if (IsCartridge&& IsActive)
+            {
+                Rb.gravityScale = 0;
+                Rb.velocity = Vector2.zero;
+            }
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (IsCartridge)
+        {
+            IsActive = false;
+            Rb.gravityScale = 10;
+            InitalPosV3 = new Vector2(0,-10); 
+        }
     }
 
     IEnumerator DestroyBullet()
