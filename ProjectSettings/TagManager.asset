@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - SeedsSpawner
+  - WheatSeed
+  - CornSeed
   layers:
   - Default
   - TransparentFX
@@ -11,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - FarmGround
   - 
   - 
   - 
@@ -44,6 +47,12 @@ TagManager:
   - name: Ground
     uniqueID: 2429346293
     locked: 0
+  - name: Plants
+    uniqueID: 761913747
+    locked: 0
   - name: Player
     uniqueID: 543293331
+    locked: 0
+  - name: GunsAndTools
+    uniqueID: 13736449
     locked: 0

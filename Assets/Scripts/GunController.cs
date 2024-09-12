@@ -20,7 +20,7 @@ public class GunController : MonoBehaviour
 
     
 
-    public MainManager.GunTypeE ThisGunType;
+    public MainManager.Tools ThisGunType;
 
     // Start is called before the first frame update
     void Start()
@@ -38,14 +38,14 @@ public class GunController : MonoBehaviour
 
             switch (ThisGunType)
             {
-                case MainManager.GunTypeE.Pistol:
+                case MainManager.Tools.Pistol:
                     StartCoroutine(FirePistol());
                     break;
-                case MainManager.GunTypeE.Rifle:
+                case MainManager.Tools.Rifle:
                     _PlayerController.IsShooting = true;
                     StartCoroutine(FireRifle());
                     break;
-                case MainManager.GunTypeE.Shotgun:
+                case MainManager.Tools.Shotgun:
                     StartCoroutine(FireShotgun());
                     IsGunLoaded = false;
                     break;
@@ -88,11 +88,7 @@ public class GunController : MonoBehaviour
             FireFlashAnimator.GetComponent<SpriteRenderer>().sortingOrder = 1;
             Recoil();
             yield return new WaitForSeconds(.1f);
-            if (_PlayerController.IsShiftPressedB)
-            {
-                break;
-            }
-
+            
             yield return null;
         }
         CameraAnimator.SetBool("CamShakeBool",false);

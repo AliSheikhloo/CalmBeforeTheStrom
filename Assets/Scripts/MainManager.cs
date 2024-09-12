@@ -5,40 +5,53 @@ using UnityEngine;
 public class MainManager : MonoBehaviour
 {
     public PlayerController _PlayerController;
-    public enum GunTypeE
+    public int PlayerMoney;
+    public enum Tools
     {
         Pistol,
         Rifle,
-        Shotgun
+        Shotgun,
+        WheatSeed,
+        CornSeed,
+        sickle
     }
-    
-    public List<GameObject> Guns;
+    public List<GameObject> ToolsList;
     // Start is called before the first frame update
     void Start()
     {
         _PlayerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        InstantiateGun(_PlayerController.PlayerGun);
+        InstantiateTool(_PlayerController.PlayerInHand);
     }
 
-
-    public void SwichGun(GunTypeE nextGun)
+    
+    public void SwichTool(Tools NextTool)
     {
         Destroy(_PlayerController.transform.GetChild(2).gameObject);
-        InstantiateGun(nextGun);
+        InstantiateTool(NextTool);
+        _PlayerController.PlayerInHand = NextTool;
     }
 
-    void InstantiateGun(GunTypeE gunTypeE)
+    void InstantiateTool(Tools toolTypeE)
     {
-        switch (gunTypeE)
+        switch (toolTypeE)
         {
-            case GunTypeE.Pistol:
-                Instantiate(Guns[0], _PlayerController.transform);
+            case Tools.Pistol:
+                Instantiate(ToolsList[0], _PlayerController.transform);
                 break;
-            case GunTypeE.Rifle:
-                Instantiate(Guns[1], _PlayerController.transform);
+            case Tools.Rifle:
+                Instantiate(ToolsList[1], _PlayerController.transform);
                 break;
-            case GunTypeE.Shotgun:
-                Instantiate(Guns[2], _PlayerController.transform);
+            case Tools.Shotgun:
+                Instantiate(ToolsList[2], _PlayerController.transform);
+                break;
+            case Tools.WheatSeed:
+                Instantiate(ToolsList[3], _PlayerController.transform);
+                break;
+            case Tools.CornSeed:
+                Instantiate(ToolsList[4], _PlayerController.transform);
+                break;
+            case Tools.sickle:
+                Instantiate(ToolsList[5], _PlayerController.transform);
                 break;
         }
     }

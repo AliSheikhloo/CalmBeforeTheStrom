@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="03221122-db36-4fcb-9976-94694beaad2d" name="Changes" comment="added main manager and some effects like camera shake and gun recoil and fire flash">
+    <list default="true" id="03221122-db36-4fcb-9976-94694beaad2d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheCalmBeforeTheStorm/.idea/shelf/Uncommitted_changes_before_Reset_at_9_11_2024_12_29_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheCalmBeforeTheStorm/.idea/shelf/Uncommitted_changes_before_Reset_at_9_11_2024_12_29_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheCalmBeforeTheStorm/.idea/shelf/Uncommitted_changes_before_Update_at_9_11_2024_11_04_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheCalmBeforeTheStorm/.idea/shelf/Uncommitted_changes_before_Update_at_9_11_2024_11_04_AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TheCalmBeforeTheStorm/.idea/shelf/Uncommitted_changes_before_Update_at_9_11_2024_5_15_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheCalmBeforeTheStorm/.idea/shelf/Uncommitted_changes_before_Update_at_9_11_2024_5_15_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TheCalmBeforeTheStorm/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheCalmBeforeTheStorm/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Main Camera.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Main Camera.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Bullet.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Bullet.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/gun.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/gun.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/bullets/RifleBullet.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/bullets/RifleBullet.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/gunss/Pistol.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/gunss/Pistol.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/gunss/Rifle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/gunss/Rifle.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/gunss/Shotgun.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/gunss/Shotgun.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tile Pallets/Ground.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tile Pallets/Ground.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GunController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GunController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,15 +32,11 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/BuilderPatternFunctionsRewriter.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/UnityProjects/TheCalmBeforeTheStorm/Assets/Prefabs/bullets/Cartridge.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/UnityProjects/TheCalmBeforeTheStorm/Assets/Scripts/BulletsController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/UnityProjects/TheCalmBeforeTheStorm/Assets/Scripts/BulletsController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GunController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/UnityProjects/TheCalmBeforeTheStorm/Assets/Scripts/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/UnityProjects/TheCalmBeforeTheStorm/Assets/Scripts/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Pooling.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SeedSpawns.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -52,7 +61,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\unity\unity\2022.3.42f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="D:\Unity\unity\2022.3.42f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\UnityProjects\TheCalmBeforeTheStorm -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\UnityProjects\TheCalmBeforeTheStorm" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -93,7 +102,9 @@
       <updated>1725867883972</updated>
       <workItem from="1725867907032" duration="11318000" />
       <workItem from="1725957837181" duration="13501000" />
-      <workItem from="1726058712680" duration="9722000" />
+      <workItem from="1726058712680" duration="9784000" />
+      <workItem from="1726073324817" duration="305000" />
+      <workItem from="1726126079042" duration="12366000" />
     </task>
     <task id="LOCAL-00001" summary="Inital commit">
       <created>1725868343797</created>
@@ -242,7 +253,14 @@
       <option name="project" value="LOCAL" />
       <updated>1726067663665</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="some edits">
+      <created>1726068954214</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1726068954214</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,6 +335,7 @@
     <MESSAGE value="Fixed cartridge bug and did some other changes" />
     <MESSAGE value="added camra shake system and gun recoil system and changed player look system and added GameManager for adding shoping system" />
     <MESSAGE value="added main manager and some effects like camera shake and gun recoil and fire flash" />
-    <option name="LAST_COMMIT_MESSAGE" value="added main manager and some effects like camera shake and gun recoil and fire flash" />
+    <MESSAGE value="some edits" />
+    <option name="LAST_COMMIT_MESSAGE" value="some edits" />
   </component>
 </project>
