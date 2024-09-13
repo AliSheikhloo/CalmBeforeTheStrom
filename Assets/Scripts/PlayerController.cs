@@ -91,22 +91,22 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            PlayerRB.AddForce(-transform.right * MovingSpeedF * Time.deltaTime * 50);
+            PlayerRB.AddForce(-transform.right * MovingSpeedF * Time.fixedDeltaTime * 50);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            PlayerRB.AddForce(-transform.up * MovingSpeedF * Time.deltaTime * 50);
+            PlayerRB.AddForce(-transform.up * MovingSpeedF * Time.fixedDeltaTime * 50);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            PlayerRB.AddForce(transform.right * MovingSpeedF * Time.deltaTime * 50);
+            PlayerRB.AddForce(transform.right * MovingSpeedF * Time.fixedDeltaTime * 50);
         }
 
         if (Input.GetKey(KeyCode.W))
         {
-            PlayerRB.AddForce(transform.up * MovingSpeedF * Time.deltaTime * 50);
+            PlayerRB.AddForce(transform.up * MovingSpeedF * Time.fixedDeltaTime * 50);
         }
 
         /*if (Input.GetKeyDown(KeyCode.Space)&& IsJumpFinished)

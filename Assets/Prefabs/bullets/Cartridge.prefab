@@ -127,3 +127,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletShootingPowerF: 30
   IsCartridge: 1
+  InitalPosV3: {x: 0, y: 0}
