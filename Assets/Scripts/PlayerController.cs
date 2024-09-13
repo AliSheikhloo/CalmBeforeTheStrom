@@ -1,17 +1,31 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+using Tile = UnityEngine.WSA.Tile;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float MovingSpeedF;
-
+    public MainManager.Tools PlayerInHand = MainManager.Tools.WheatSeed;
+    private MainManager _MainManager;
+    
+    private float CurrentSpeedF;
+    [SerializeField] private float WalkingSpeedF;
+    [SerializeField] private float RunningSpeedF;
+    
+    
+    public List<GameObject> UsedFarmCells;
+    [SerializeField] private GameObject WheatSeedPrefabG;
+    [SerializeField] private GameObject CornSeedPrefabG;
+    [SerializeField] private GameObject Seeds;
+    [SerializeField] private GameObject HarvestingEffectPrefabG;
     //[SerializeField] private float JumpForceF;
 
     private Rigidbody2D PlayerRB;
     public bool IsShiftPressedB = false;
-    private bool IsGunPickedUpB = true;
     public bool IsShooting = false;
     public bool IsPlayerLookingLeft;
     //private bool IsJumpFinished = true;
@@ -19,6 +33,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _MainManager = GameObject.Find("MainManager").GetComponent<MainManager>();
         Application.targetFrameRate = 60;
         PlayerRB = GetComponent<Rigidbody2D>();
         
@@ -27,93 +42,150 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //Player facing system
-        Vector3 transformLocalScaleV3 = transform.localScale;
-        if (PlayerRB.velocity.x != 0 && !IsShooting)
-        {
-            if (PlayerRB.velocity.x > 0)
-            {
-                transformLocalScaleV3.x = -1;
-                IsPlayerLookingLeft = false;
-            }
-            else
-            {
-                transformLocalScaleV3.x = 1;
-                IsPlayerLookingLeft = true;
-
-            }
-        }
-        
-
-        transform.localScale = transformLocalScaleV3;
-        
-    }
-
-    private void FixedUpdate()
-    {
         BasicMovment();
-    }
 
-
-    /*
-     Jump isnt used for now
-     IEnumerator Jump()
-    {
-        Vector3 playerPositionV3 = transform.position;
-        PlayerRB.AddForce(transform.up*JumpForceF,ForceMode2D.Impulse);
-        while(transform.position.y>playerPositionV3.y-.001f)
+        if ((PlayerInHand == MainManager.Tools.WheatSeed || PlayerInHand== MainManager.Tools.CornSeed) && Input.GetKey(KeyCode.Space))
         {
-            PlayerRB.AddForce(-transform.up*JumpForceF*4);
-            yield return null;
+            PlantSeeds();
         }
 
-        Vector2 playerRbVelocityV2 = PlayerRB.velocity;
-        playerRbVelocityV2.y = 0;
-        PlayerRB.velocity = playerRbVelocityV2;
-        IsJumpFinished = true;
-    }*/
+        if (PlayerInHand == MainManager.Tools.sickle&& Input.GetKey(KeyCode.Space))
+        {
+            HarvestPlants();
+        }
+
+        if (Input.GetKey(KeyCode.N))
+        {
+            _MainManager.SwichTool(MainManager.Tools.Rifle);
+        }
+        
+        if (Input.GetKey(KeyCode.B))
+        {
+            _MainManager.SwichTool(MainManager.Tools.sickle);
+        }
+    }
 
     void BasicMovment()
     {
-        //Basic movment of player
-        if (Input.GetKeyDown(KeyCode.LeftShift) && !IsShiftPressedB)
-        {
-            MovingSpeedF *= 2;
-            IsShiftPressedB = true;
-        }
+        Vector3 transformLocalScaleV3 = transform.localScale;
 
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        //Basic movment of player
+        if (!IsShooting)
         {
-            IsShiftPressedB = false;
-            MovingSpeedF /= 2;
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                CurrentSpeedF = RunningSpeedF;
+                IsShiftPressedB = true;
+            }
+            else
+            {
+                CurrentSpeedF = WalkingSpeedF;
+                IsShiftPressedB = false;
+            }
+        }
+        else
+        {
+            CurrentSpeedF = WalkingSpeedF;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            PlayerRB.AddForce(-transform.right * MovingSpeedF * Time.fixedDeltaTime * 50);
+            PlayerRB.AddForce(-transform.right * CurrentSpeedF * Time.fixedDeltaTime * 50);
+
+            if (!IsShooting)
+            {
+                transformLocalScaleV3.x = 1;
+                IsPlayerLookingLeft = true;
+            }
+
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            PlayerRB.AddForce(-transform.up * MovingSpeedF * Time.fixedDeltaTime * 50);
+            PlayerRB.AddForce(-transform.up *  CurrentSpeedF * Time.fixedDeltaTime * 50);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            PlayerRB.AddForce(transform.right * MovingSpeedF * Time.fixedDeltaTime * 50);
+            PlayerRB.AddForce(transform.right * CurrentSpeedF * Time.fixedDeltaTime * 50);
+            if (!IsShooting)
+            {
+                transformLocalScaleV3.x = -1;
+                IsPlayerLookingLeft = false;
+            }
         }
 
         if (Input.GetKey(KeyCode.W))
         {
-            PlayerRB.AddForce(transform.up * MovingSpeedF * Time.fixedDeltaTime * 50);
+            PlayerRB.AddForce(transform.up * CurrentSpeedF * Time.fixedDeltaTime * 50);
         }
-
-        /*if (Input.GetKeyDown(KeyCode.Space)&& IsJumpFinished)
-        {
-            StartCoroutine(Jump());
-            IsJumpFinished = false;
-        }*/
+        
+        transform.localScale = transformLocalScaleV3;
 
     }
+
+    void PlantSeeds()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1);
+        foreach (var VARIABLE in colliders)
+        {
+            if (VARIABLE.gameObject.tag == "SeedsSpawner")
+            {
+                if (!UsedFarmCells.Contains(VARIABLE.gameObject))
+                {
+                    UsedFarmCells.Add(VARIABLE.gameObject);
+                    switch (PlayerInHand)
+                    {
+                        case MainManager.Tools.WheatSeed:
+                            Instantiate(WheatSeedPrefabG, VARIABLE.transform.position, quaternion.identity,Seeds.transform);
+                            break;
+                        case MainManager.Tools.CornSeed:
+                            Instantiate(CornSeedPrefabG, VARIABLE.transform.position, quaternion.identity,Seeds.transform);
+                            break;
+                    }
+                }
+            }
+        }
+    }
+
+    void HarvestPlants()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1);
+            
+        foreach (var VARIABLE in colliders)
+        {
+            if (VARIABLE.gameObject.tag == "SeedsSpawner")
+            {
+                if (UsedFarmCells.Contains(VARIABLE.gameObject))
+                {
+                    UsedFarmCells.Remove(VARIABLE.gameObject);
+                }
+            }
+
+            if (VARIABLE.gameObject.tag == "WheatSeed")
+            {
+                Destroy(VARIABLE.gameObject);
+                GameObject prefab=Instantiate(HarvestingEffectPrefabG, VARIABLE.transform.position, quaternion.identity);
+                StartCoroutine(DestroyHarvestingParticleSystem(prefab));
+                _MainManager.PlayerMoney += 20;
+
+            }
+
+            if (VARIABLE.gameObject.tag == "CornSeed")
+            {
+                Destroy(VARIABLE.gameObject);
+                GameObject prefab=Instantiate(HarvestingEffectPrefabG, VARIABLE.transform.position, quaternion.identity);
+                StartCoroutine(DestroyHarvestingParticleSystem(prefab));
+                _MainManager.PlayerMoney += 50;
+            }
+        }
+
+    }
+
+    IEnumerator DestroyHarvestingParticleSystem(GameObject prefab)
+    {
+        yield return new WaitForSeconds(3);
+        Destroy(prefab);
+    }
+    
 }

@@ -1,49 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class GunController : MonoBehaviour
 {
     [SerializeField] PlayerController _PlayerController;
+
     public int AccuracyI;
-    public int FireRateI;
+    public int RecoilI;
 
     [SerializeField] private string BulletPrefabS;
+    [SerializeField] private Animator CameraAnimator;
+    [SerializeField] private Animator FireFlashAnimator;
+
     private bool IsGunLoaded = true;
 
-    public enum GunTypeE
-    {
-        Pistol,
-        Rifle,
-        Shotgun
-    }
+    
 
-    public GunTypeE ThisGunType;
+    public MainManager.Tools ThisGunType;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        CameraAnimator = Camera.main.GetComponent<Animator>();
+        FireFlashAnimator = GameObject.Find("FireFlash").GetComponent<Animator>();
+        _PlayerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
     public void Shooting()
     {
-        if (_PlayerController.IsShiftPressedB) return;
+//        if (_PlayerController.IsShiftPressedB) return;
 
         if (Input.GetKeyDown(KeyCode.Space) && IsGunLoaded)
         {
 
             switch (ThisGunType)
             {
-                case GunTypeE.Pistol:
+                case MainManager.Tools.Pistol:
                     StartCoroutine(FirePistol());
                     break;
-                case GunTypeE.Rifle:
+                case MainManager.Tools.Rifle:
                     _PlayerController.IsShooting = true;
                     StartCoroutine(FireRifle());
                     break;
-                case GunTypeE.Shotgun:
+                case MainManager.Tools.Shotgun:
                     StartCoroutine(FireShotgun());
                     IsGunLoaded = false;
                     break;
@@ -65,6 +67,11 @@ public class GunController : MonoBehaviour
 
         InstantiateBullet();
         ThrowCartridge();
+        Recoil();
+        CameraAnimator.SetBool("CamShakeBool",true);
+        CameraAnimator.SetBool("CamShakeBool",false);
+        FireFlashAnimator.SetTrigger("Shoot");
+        FireFlashAnimator.SetBool("IsShooting",false);
         yield return null;
 
     }
@@ -76,14 +83,17 @@ public class GunController : MonoBehaviour
         {
             InstantiateBullet();
             ThrowCartridge();
+            CameraAnimator.SetBool("CamShakeBool",true);
+            FireFlashAnimator.SetBool("IsShooting",true);
+            FireFlashAnimator.GetComponent<SpriteRenderer>().sortingOrder = 1;
+            Recoil();
             yield return new WaitForSeconds(.1f);
-            if (_PlayerController.IsShiftPressedB)
-            {
-                break;
-            }
-
+            
             yield return null;
         }
+        CameraAnimator.SetBool("CamShakeBool",false);
+        FireFlashAnimator.SetBool("IsShooting",false);
+        FireFlashAnimator.GetComponent<SpriteRenderer>().sortingOrder = -1;
         _PlayerController.IsShooting = false;
     }
 
@@ -94,6 +104,11 @@ public class GunController : MonoBehaviour
             for (int j = 0; j < 3; j++)
             {
                 InstantiateBullet();
+                Recoil();
+                CameraAnimator.SetTrigger("CamShakeTrigger");
+                CameraAnimator.SetBool("CamShakeBool",false);
+                FireFlashAnimator.SetTrigger("Shoot");
+                FireFlashAnimator.SetBool("IsShooting",false);
             }
             yield return null;
         }
@@ -125,5 +140,15 @@ public class GunController : MonoBehaviour
         cartridge.SetActive(true);
         cartridge.GetComponent<Rigidbody2D>().AddForce(cartridge.transform.up * 20, ForceMode2D.Impulse);
 
+    }
+
+    void Recoil()
+    {
+        int mirror = 1;
+        if (_PlayerController.IsPlayerLookingLeft)
+        {
+            mirror = -1;
+        }
+        _PlayerController.GetComponent<Rigidbody2D>().AddForce(-_PlayerController.transform.right*RecoilI*mirror,ForceMode2D.Impulse);
     }
 }
