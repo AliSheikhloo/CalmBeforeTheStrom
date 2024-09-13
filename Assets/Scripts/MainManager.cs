@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class MainManager : MonoBehaviour
 {
@@ -16,14 +18,22 @@ public class MainManager : MonoBehaviour
         sickle
     }
     public List<GameObject> ToolsList;
+
+    public bool IsNightB;
+    public static int CurrentDay;
+
+    [SerializeField] private ParticleSystem RainEffect;
+    [SerializeField] private Light2D GlobalLight;
     // Start is called before the first frame update
     void Start()
     {
         _PlayerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        InstantiateTool(_PlayerController.PlayerInHand);
+        //InstantiateTool(_PlayerController.PlayerInHand);
+        Application.targetFrameRate = 120;
+        StartCoroutine(NightDayCycle());
     }
 
-    
+
     public void SwichTool(Tools NextTool)
     {
         Destroy(_PlayerController.transform.GetChild(2).gameObject);
@@ -55,4 +65,57 @@ public class MainManager : MonoBehaviour
                 break;
         }
     }
+
+    public void Buy(string obj)
+    {
+        switch (obj)
+        {
+            case "Rifle":
+                SwichTool(Tools.Rifle);
+                break;
+            case "ShotGun":
+                SwichTool(Tools.Shotgun);
+                break;
+            case "CornSeed":
+                SwichTool(Tools.CornSeed);
+                break;
+        }
+    }
+
+    IEnumerator NightDayCycle()
+    {
+        int time;
+        if (IsNightB)
+        {
+            time = 5;
+        }
+        else
+        {
+            time = 2;
+        }
+        yield return new WaitForSeconds(time);
+        if (!IsNightB)
+        {
+            for (int i = 0; i < 95; i++)
+            {
+                GlobalLight.intensity -= .01f;
+                yield return null;
+            }
+            RainEffect.Play();
+        }
+        else
+        {
+            RainEffect.Stop();
+            for (int i = 0; i < 95; i++)
+            {
+                GlobalLight.intensity += .01f;
+                yield return null;
+            }
+            CurrentDay++;
+        }
+
+        IsNightB = !IsNightB;
+        StartCoroutine(NightDayCycle());
+    }
 }
+
