@@ -1,11 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Tilemaps;
-using Tile = UnityEngine.WSA.Tile;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,6 +21,7 @@ public class PlayerController : MonoBehaviour
     //[SerializeField] private float JumpForceF;
 
     private Rigidbody2D PlayerRB;
+    private Animator _Animator;
     public bool IsShiftPressedB = false;
     public bool IsShooting = false;
     public bool IsPlayerLookingLeft;
@@ -36,14 +33,25 @@ public class PlayerController : MonoBehaviour
         _MainManager = GameObject.Find("MainManager").GetComponent<MainManager>();
         Application.targetFrameRate = 60;
         PlayerRB = GetComponent<Rigidbody2D>();
+        _Animator = GetComponent<Animator>();
         
+    }
+    private void FixedUpdate()
+    {
+        BasicMovment();
     }
 
     // Update is called once per frame
     void Update()
     {
-        BasicMovment();
-
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            _Animator.SetBool("Walk", true);
+        }
+        else
+        {
+            _Animator.SetBool("Walk", false);
+        }
         if ((PlayerInHand == MainManager.Tools.WheatSeed || PlayerInHand== MainManager.Tools.CornSeed) && Input.GetKey(KeyCode.Space))
         {
             PlantSeeds();
@@ -68,7 +76,10 @@ public class PlayerController : MonoBehaviour
     void BasicMovment()
     {
         Vector3 transformLocalScaleV3 = transform.localScale;
-
+        Vector2 MoveDir = new Vector2();
+        MoveDir.x = Input.GetAxis("Horizontal");
+        MoveDir.y = Input.GetAxis("Vertical");
+        MoveDir.Normalize();
         //Basic movment of player
         if (!IsShooting)
         {
@@ -90,35 +101,26 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            PlayerRB.AddForce(-transform.right * CurrentSpeedF * Time.fixedDeltaTime * 50);
-
             if (!IsShooting)
             {
-                transformLocalScaleV3.x = 1;
+                transformLocalScaleV3.x = -1;
                 IsPlayerLookingLeft = true;
             }
 
         }
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            PlayerRB.AddForce(-transform.up *  CurrentSpeedF * Time.fixedDeltaTime * 50);
-        }
-
         if (Input.GetKey(KeyCode.D))
         {
-            PlayerRB.AddForce(transform.right * CurrentSpeedF * Time.fixedDeltaTime * 50);
             if (!IsShooting)
             {
-                transformLocalScaleV3.x = -1;
+                transformLocalScaleV3.x = 1;
                 IsPlayerLookingLeft = false;
             }
         }
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            PlayerRB.AddForce(transform.up * CurrentSpeedF * Time.fixedDeltaTime * 50);
-        }
+        
+        PlayerRB.AddForce(MoveDir * CurrentSpeedF * Time.fixedDeltaTime * 50);
+        
         
         transform.localScale = transformLocalScaleV3;
 
