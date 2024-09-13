@@ -112,10 +112,8 @@ public class GunController : MonoBehaviour
             }
             yield return null;
         }
-        for (int i = 0; i < 800 * Time.deltaTime; i++)
-        {
-            yield return null;
-        }
+
+        yield return new WaitForSeconds(.5f);
         ThrowCartridge();
         IsGunLoaded = true;
     }

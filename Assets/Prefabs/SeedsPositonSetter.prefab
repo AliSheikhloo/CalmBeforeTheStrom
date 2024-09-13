@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7843677668247605541}
   - component: {fileID: -3778932736931628266}
+  - component: {fileID: 7132419794552601155}
   m_Layer: 0
   m_Name: SeedsPositonSetter
   m_TagString: SeedsSpawner
@@ -77,3 +78,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7132419794552601155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8837063959797451711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b5f0d16b463f84ea4d02976d9e8369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Wheat: {fileID: 7701150950222113599, guid: b4f841013db202e4f96470916b86ca24, type: 3}
+  Corn: {fileID: 7701150950222113599, guid: ed25b31726c067a4a9913ba0ab272335, type: 3}
+  isGrown: 0

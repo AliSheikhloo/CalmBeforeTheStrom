@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +30,19 @@ public class EnemyAi : MonoBehaviour
         {
             print("SDDS");
             AI.transform.localScale = new Vector3(-1, 1, 1);
+        }
+        CheckForHittig();
+    }
+
+    private void CheckForHittig()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1);
+        foreach (var VARIABLE in colliders)
+        {
+            if (VARIABLE.gameObject.tag == "Bullet")
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

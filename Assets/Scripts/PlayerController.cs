@@ -13,9 +13,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float RunningSpeedF;
     
     
-    public List<GameObject> UsedFarmCells;
-    [SerializeField] private GameObject WheatSeedPrefabG;
     [SerializeField] private GameObject CornSeedPrefabG;
+    [SerializeField] private GameObject WheatSeedPrefabG;
+
     [SerializeField] private GameObject Seeds;
     [SerializeField] private GameObject HarvestingEffectPrefabG;
     //[SerializeField] private float JumpForceF;
@@ -25,13 +25,13 @@ public class PlayerController : MonoBehaviour
     public bool IsShiftPressedB = false;
     public bool IsShooting = false;
     public bool IsPlayerLookingLeft;
+
     //private bool IsJumpFinished = true;
 
     // Start is called before the first frame update
     void Start()
     {
         _MainManager = GameObject.Find("MainManager").GetComponent<MainManager>();
-        Application.targetFrameRate = 60;
         PlayerRB = GetComponent<Rigidbody2D>();
         _Animator = GetComponent<Animator>();
         
@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
         {
             _Animator.SetBool("Walk", false);
         }
+
         if ((PlayerInHand == MainManager.Tools.WheatSeed || PlayerInHand== MainManager.Tools.CornSeed) && Input.GetKey(KeyCode.Space))
         {
             PlantSeeds();
@@ -64,12 +65,16 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.N))
         {
-            _MainManager.SwichTool(MainManager.Tools.Rifle);
+            _MainManager.Buy("ShotGun");
         }
         
         if (Input.GetKey(KeyCode.B))
         {
             _MainManager.SwichTool(MainManager.Tools.sickle);
+        }
+        if (Input.GetKey(KeyCode.H))
+        {
+            _MainManager.SwichTool(MainManager.Tools.CornSeed);
         }
     }
 
@@ -99,7 +104,7 @@ public class PlayerController : MonoBehaviour
             CurrentSpeedF = WalkingSpeedF;
         }
 
-        if (PlayerRB.velocity.x < 0)
+        if (MoveDir.x < 0)
         {
             if (!IsShooting)
             {
@@ -109,7 +114,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (PlayerRB.velocity.x > 0)
+        if (MoveDir.x > 0)
         {
             if (!IsShooting)
             {
@@ -133,21 +138,24 @@ public class PlayerController : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1);
         foreach (var VARIABLE in colliders)
         {
-            if (VARIABLE.gameObject.tag == "SeedsSpawner")
+            FarmingController FC = VARIABLE.gameObject.GetComponent<FarmingController>();
+            if (VARIABLE.gameObject.tag == "SeedsSpawner" && !FC.isPlant)
             {
-                if (!UsedFarmCells.Contains(VARIABLE.gameObject))
+                FC.isPlant = true;
+                switch (PlayerInHand)
                 {
-                    UsedFarmCells.Add(VARIABLE.gameObject);
-                    switch (PlayerInHand)
-                    {
-                        case MainManager.Tools.WheatSeed:
-                            Instantiate(WheatSeedPrefabG, VARIABLE.transform.position, quaternion.identity,Seeds.transform);
-                            break;
-                        case MainManager.Tools.CornSeed:
-                            Instantiate(CornSeedPrefabG, VARIABLE.transform.position, quaternion.identity,Seeds.transform);
-                            break;
-                    }
+                    case MainManager.Tools.WheatSeed:
+                        Instantiate(WheatSeedPrefabG, VARIABLE.transform.position, quaternion.identity,
+                            Seeds.transform);
+                        FC.SeedType = "Wheat";
+                        break;
+                    case MainManager.Tools.CornSeed:
+                        Instantiate(CornSeedPrefabG, VARIABLE.transform.position, quaternion.identity, Seeds.transform);
+                        FC.SeedType = "Corn";
+                        break;
                 }
+
+                FC.DayPlant = MainManager.CurrentDay;
             }
         }
     }
@@ -158,29 +166,26 @@ public class PlayerController : MonoBehaviour
             
         foreach (var VARIABLE in colliders)
         {
-            if (VARIABLE.gameObject.tag == "SeedsSpawner")
+            FarmingController FC = VARIABLE.gameObject.GetComponent<FarmingController>();
+            if (VARIABLE.gameObject.tag == "SeedsSpawner"&& FC.isGrown && FC.isPlant)
             {
-                if (UsedFarmCells.Contains(VARIABLE.gameObject))
-                {
-                    UsedFarmCells.Remove(VARIABLE.gameObject);
-                }
+                FC.isGrown = false;
+                FC.isPlant = false;
             }
 
-            if (VARIABLE.gameObject.tag == "WheatSeed")
+            if (VARIABLE.gameObject.tag == "Wheat")
             {
                 Destroy(VARIABLE.gameObject);
                 GameObject prefab=Instantiate(HarvestingEffectPrefabG, VARIABLE.transform.position, quaternion.identity);
                 StartCoroutine(DestroyHarvestingParticleSystem(prefab));
-                _MainManager.PlayerMoney += 20;
 
             }
 
-            if (VARIABLE.gameObject.tag == "CornSeed")
+            if (VARIABLE.gameObject.tag == "Corn")
             {
                 Destroy(VARIABLE.gameObject);
                 GameObject prefab=Instantiate(HarvestingEffectPrefabG, VARIABLE.transform.position, quaternion.identity);
                 StartCoroutine(DestroyHarvestingParticleSystem(prefab));
-                _MainManager.PlayerMoney += 50;
             }
         }
 
@@ -191,5 +196,5 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(3);
         Destroy(prefab);
     }
-    
+
 }
