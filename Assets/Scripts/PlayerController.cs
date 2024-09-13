@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
             CurrentSpeedF = WalkingSpeedF;
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (PlayerRB.velocity.x < 0)
         {
             if (!IsShooting)
             {
@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (PlayerRB.velocity.x > 0)
         {
             if (!IsShooting)
             {
@@ -118,7 +118,9 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        
+
+
+
         PlayerRB.AddForce(MoveDir * CurrentSpeedF * Time.fixedDeltaTime * 50);
         
         
