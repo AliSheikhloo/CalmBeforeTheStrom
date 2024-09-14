@@ -98,7 +98,7 @@
       <workItem from="1726073324817" duration="305000" />
       <workItem from="1726126079042" duration="13916000" />
       <workItem from="1726183129642" duration="19618000" />
-      <workItem from="1726301784575" duration="18272000" />
+      <workItem from="1726301784575" duration="19792000" />
     </task>
     <task id="LOCAL-00001" summary="Inital commit">
       <created>1725868343797</created>
@@ -282,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1726231103617</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="added damage system and bullets limit system and bullet hit particles and some other changes">
+      <created>1726321464833</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1726321464833</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,6 +369,7 @@
     <MESSAGE value="colmpleted farming system and added days cycle system" />
     <MESSAGE value="completed farming system and added daynight cycle and added enemy destroy system" />
     <MESSAGE value="completed farming system and added daynight cycle" />
-    <option name="LAST_COMMIT_MESSAGE" value="completed farming system and added daynight cycle" />
+    <MESSAGE value="added damage system and bullets limit system and bullet hit particles and some other changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="added damage system and bullets limit system and bullet hit particles and some other changes" />
   </component>
 </project>

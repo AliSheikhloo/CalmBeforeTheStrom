@@ -99,6 +99,11 @@ public class PlayerController : MonoBehaviour
             _MainManager.SwichTool(MainManager.Tools.CornSeed);
             _Animator.SetTrigger("Corn");
         }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            _MainManager.Sell("Wheats");
+        }
     }
 
     void BasicMovment()
@@ -210,7 +215,7 @@ public class PlayerController : MonoBehaviour
                 GameObject prefab=Instantiate(HarvestingEffectPrefabG, VARIABLE.transform.position, quaternion.identity);
                 StartCoroutine(DestroyHarvestingParticleSystem(prefab));
                 Pooling.instance.BackObjectToRepository(VARIABLE.gameObject);
-
+                Inventory.Wheats++;
             }
 
             if (VARIABLE.gameObject.tag == "Corn")
@@ -219,6 +224,7 @@ public class PlayerController : MonoBehaviour
                 GameObject prefab=Instantiate(HarvestingEffectPrefabG, VARIABLE.transform.position, quaternion.identity);
                 StartCoroutine(DestroyHarvestingParticleSystem(prefab));
                 Pooling.instance.BackObjectToRepository(VARIABLE.gameObject);
+                Inventory.Corns++;
             }
         }
 
@@ -242,8 +248,13 @@ public class PlayerController : MonoBehaviour
     }
 
 }
-public class PlayerBullets
+public class Inventory
 {
     public static int RifleBulletsI;
     public static int ShotgunBulletsI;
+    public static int Wheats;
+    public static int Corns;
+    public static int Coins;
+    public static bool isRifleBought;
+    public static bool isShotgunBought;
 }

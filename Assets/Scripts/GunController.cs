@@ -82,7 +82,7 @@ public class GunController : MonoBehaviour
     {
         while (Input.GetKey(KeyCode.Space))
         {
-            if (PlayerBullets.RifleBulletsI == 0)
+            if (Inventory.RifleBulletsI == 0)
             {
                 break;
             }
@@ -93,7 +93,7 @@ public class GunController : MonoBehaviour
             Recoil();
             yield return new WaitForSeconds(.1f);
             ThrowCartridge();
-            PlayerBullets.RifleBulletsI--;
+            Inventory.RifleBulletsI--;
             yield return null;
         }
         CameraAnimator.SetBool("CamShakeBool",false);
@@ -104,7 +104,7 @@ public class GunController : MonoBehaviour
 
     IEnumerator FireShotgun()
     {
-        if (PlayerBullets.ShotgunBulletsI != 0)
+        if (Inventory.ShotgunBulletsI != 0)
         {
             for (int i = 0; i < 3; i++)
             {
@@ -114,7 +114,7 @@ public class GunController : MonoBehaviour
                 }
                 yield return null;
             }
-            PlayerBullets.ShotgunBulletsI--;
+            Inventory.ShotgunBulletsI--;
             CameraAnimator.SetTrigger("CamShakeTrigger");
             CameraAnimator.SetBool("CamShakeBool", false);
             FireFlashAnimator.SetTrigger("Shoot");
