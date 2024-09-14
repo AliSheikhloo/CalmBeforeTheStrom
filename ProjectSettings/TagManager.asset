@@ -10,6 +10,8 @@ TagManager:
   - WheatSeed
   - CornSeed
   - Bullet
+  - Enemy
+  - Hitable
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - Water
   - UI
   - FarmGround
-  - 
+  - Hitable
   - 
   - 
   - 
@@ -59,6 +61,6 @@ TagManager:
   - name: Player
     uniqueID: 543293331
     locked: 0
-  - name: Rain
+  - name: Effects
     uniqueID: 3963813689
     locked: 0

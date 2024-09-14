@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="03221122-db36-4fcb-9976-94694beaad2d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TheCalmBeforeTheStorm/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheCalmBeforeTheStorm/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,26 +34,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Discover.Launch.Via.Unity": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "settings.editor.selected.configurable": "vcs.Git",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Discover.Launch.Via.Unity&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "GitStage.ChangesTree.GroupingKeys": [
-      "directory",
-      "module",
-      "repository"
+  &quot;keyToStringList&quot;: {
+    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;,
+      &quot;module&quot;,
+      &quot;repository&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="D:\Unity\unity\2022.3.42f1\Editor\Unity.exe" />
+      <option name="EXE_PATH" value="D:\unity\unity\2022.3.42f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\UnityProjects\TheCalmBeforeTheStorm -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\UnityProjects\TheCalmBeforeTheStorm" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -98,7 +97,8 @@
       <workItem from="1726058712680" duration="9784000" />
       <workItem from="1726073324817" duration="305000" />
       <workItem from="1726126079042" duration="13916000" />
-      <workItem from="1726183129642" duration="19180000" />
+      <workItem from="1726183129642" duration="19618000" />
+      <workItem from="1726301784575" duration="18272000" />
     </task>
     <task id="LOCAL-00001" summary="Inital commit">
       <created>1725868343797</created>
@@ -275,7 +275,14 @@
       <option name="project" value="LOCAL" />
       <updated>1726229305556</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="completed farming system and added daynight cycle">
+      <created>1726231103617</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1726231103617</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -354,6 +361,7 @@
     <MESSAGE value="lots of changes: InHandSystem added, FarmingSystemAdded, Changed Runing when firing logic" />
     <MESSAGE value="colmpleted farming system and added days cycle system" />
     <MESSAGE value="completed farming system and added daynight cycle and added enemy destroy system" />
-    <option name="LAST_COMMIT_MESSAGE" value="completed farming system and added daynight cycle and added enemy destroy system" />
+    <MESSAGE value="completed farming system and added daynight cycle" />
+    <option name="LAST_COMMIT_MESSAGE" value="completed farming system and added daynight cycle" />
   </component>
 </project>

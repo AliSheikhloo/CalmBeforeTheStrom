@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     public bool IsShooting = false;
     public bool IsPlayerLookingLeft;
 
+    public int HealthI = 10;
+
     //private bool IsJumpFinished = true;
 
     // Start is called before the first frame update
@@ -62,16 +64,21 @@ public class PlayerController : MonoBehaviour
         {
             HarvestPlants();
         }
-        if (Input.GetKey(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.N))
         {
             _MainManager.Buy("Rifle");
             _Animator.SetTrigger("Rifle");
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            _MainManager.Buy("Pistol");
+            _Animator.SetTrigger("Pistol");
         }
         if (Input.GetKey(KeyCode.Alpha1))
         {
             _MainManager.Buy("Rifle");
         }
-        if (Input.GetKey(KeyCode.Alpha3))
+        if (Input.GetKey(KeyCode.M))
         {
             _MainManager.Buy("ShotGun");
             _Animator.SetTrigger("Shotgun");
@@ -223,4 +230,20 @@ public class PlayerController : MonoBehaviour
         Destroy(prefab);
     }
 
+    public IEnumerator Damage()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        HealthI--;
+        float mirror = -transform.localScale.x;
+        PlayerRB.AddForce(((transform.right*mirror))*10,ForceMode2D.Impulse);
+        spriteRenderer.color=Color.red;
+        yield return new WaitForSeconds(.2f);
+        spriteRenderer.color=Color.white;
+    }
+
+}
+public class PlayerBullets
+{
+    public static int RifleBulletsI;
+    public static int ShotgunBulletsI;
 }

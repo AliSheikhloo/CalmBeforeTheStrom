@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 58240401}
   m_Layer: 0
   m_Name: GunStore
-  m_TagString: Untagged
+  m_TagString: Hitable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2631,7 +2631,7 @@ GameObject:
   - component: {fileID: 68788442}
   m_Layer: 0
   m_Name: FarmerHouse
-  m_TagString: Untagged
+  m_TagString: Hitable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5317,7 +5317,7 @@ TilemapCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 230671494}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -9329,8 +9329,8 @@ GameObject:
   - component: {fileID: 794979872}
   - component: {fileID: 794979874}
   - component: {fileID: 794979875}
-  - component: {fileID: 794979877}
   - component: {fileID: 794979876}
+  - component: {fileID: 794979877}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -9430,6 +9430,7 @@ MonoBehaviour:
   IsShiftPressedB: 0
   IsShooting: 0
   IsPlayerLookingLeft: 0
+  HealthI: 10
 --- !u!50 &794979875
 Rigidbody2D:
   serializedVersion: 4
@@ -9478,8 +9479,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!58 &794979877
-CircleCollider2D:
+--- !u!70 &794979877
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -9510,9 +9511,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.06, y: -0.72}
-  serializedVersion: 2
-  m_Radius: 0.5
+  m_Offset: {x: -0.08182436, y: -0.7717114}
+  m_Size: {x: 0.7221674, y: 0.8624791}
+  m_Direction: 0
 --- !u!1 &799639227
 GameObject:
   m_ObjectHideFlags: 0
@@ -9853,19 +9854,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PistolBullet:
     prefab: {fileID: 1648255324117529464, guid: 2a07ae3fd007b5e49beddc3ff483d39b, type: 3}
-    Count: 50
+    Count: 20
     Objects: []
   RifleBullet:
     prefab: {fileID: 1648255324117529464, guid: 382acbe86417397468c6e660c018635b, type: 3}
-    Count: 50
+    Count: 30
     Objects: []
   ShotgunBullet:
     prefab: {fileID: 1648255324117529464, guid: c7175c9fb15bfe94dba74a2ce75123b0, type: 3}
-    Count: 50
+    Count: 30
     Objects: []
   Cartridge:
     prefab: {fileID: 1648255324117529464, guid: 026e624105e2ed04da01f5ff5bcd45aa, type: 3}
-    Count: 50
+    Count: 20
     Objects: []
   CornSeed:
     prefab: {fileID: 7701150950222113599, guid: ed25b31726c067a4a9913ba0ab272335, type: 3}
@@ -9882,6 +9883,10 @@ MonoBehaviour:
   Wheat:
     prefab: {fileID: 7701150950222113599, guid: b4f841013db202e4f96470916b86ca24, type: 3}
     Count: 50
+    Objects: []
+  HitEffect:
+    prefab: {fileID: 4227645826780133724, guid: 1a8af0fde0adb6045b3fac0ac72f2c01, type: 3}
+    Count: 10
     Objects: []
 --- !u!1 &929370269
 GameObject:
@@ -10399,7 +10404,7 @@ GameObject:
   - component: {fileID: 1119709455}
   - component: {fileID: 1119709454}
   - component: {fileID: 1119709457}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SeedSpawn (1)
   m_TagString: SeedsSpawner
   m_Icon: {fileID: 0}
@@ -11041,9 +11046,9 @@ MonoBehaviour:
   RainEffect: {fileID: 1396842125}
   GlobalLight: {fileID: 1728402518}
   SpotLight: {fileID: 132459228}
-  NightTimeI: 10
-  DayTimeI: 10
-  LightIntensity: 1
+  NightTimeI: 5
+  DayTimeI: 3
+  LightIntensity: 0
 --- !u!4 &1205804115
 Transform:
   m_ObjectHideFlags: 0
@@ -16401,6 +16406,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1897765748154160847, guid: 289aead6759da2d48aeed58257560f9a, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 794979873}
     - target: {fileID: 3408914072573474073, guid: 289aead6759da2d48aeed58257560f9a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.467163
@@ -16441,6 +16450,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8564293655645319883, guid: 289aead6759da2d48aeed58257560f9a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8893423990535930631, guid: 289aead6759da2d48aeed58257560f9a, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -16448,7 +16461,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8893423990535930631, guid: 289aead6759da2d48aeed58257560f9a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2064865318}
   m_SourcePrefab: {fileID: 100100000, guid: 289aead6759da2d48aeed58257560f9a, type: 3}
 --- !u!1 &1438622414
 GameObject:
@@ -16946,7 +16962,7 @@ GameObject:
   - component: {fileID: 1560206300}
   m_Layer: 0
   m_Name: SellStore
-  m_TagString: Untagged
+  m_TagString: Hitable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17259,7 +17275,7 @@ GameObject:
   - component: {fileID: 1596782874}
   - component: {fileID: 1596782873}
   - component: {fileID: 1596782876}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SeedSpawn
   m_TagString: SeedsSpawner
   m_Icon: {fileID: 0}
@@ -18713,7 +18729,7 @@ GameObject:
   - component: {fileID: 1934296212}
   - component: {fileID: 1934296211}
   - component: {fileID: 1934296213}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SeedSpawn (2)
   m_TagString: SeedsSpawner
   m_Icon: {fileID: 0}
@@ -51444,6 +51460,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2064865312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8893423990535930631, guid: 289aead6759da2d48aeed58257560f9a, type: 3}
+  m_PrefabInstance: {fileID: 1410809443}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &2064865318
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064865312}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 10
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &2099893002
 GameObject:
   m_ObjectHideFlags: 0

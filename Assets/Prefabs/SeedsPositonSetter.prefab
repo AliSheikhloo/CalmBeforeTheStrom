@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7843677668247605541}
   - component: {fileID: -3778932736931628266}
   - component: {fileID: 7132419794552601155}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SeedsPositonSetter
   m_TagString: SeedsSpawner
   m_Icon: {fileID: 0}

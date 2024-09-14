@@ -8,6 +8,7 @@ public class MainManager : MonoBehaviour
 {
     public PlayerController _PlayerController;
     public int PlayerMoney;
+    
     public enum Tools
     {
         Pistol,
@@ -32,6 +33,9 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerBullets.RifleBulletsI = 100;
+        PlayerBullets.ShotgunBulletsI = 10;
+        
         _PlayerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         //InstantiateTool(_PlayerController.PlayerInHand);
         Application.targetFrameRate = 120;
@@ -84,6 +88,13 @@ public class MainManager : MonoBehaviour
             case "CornSeed":
                 SwichTool(Tools.CornSeed);
                 break;
+            case "RifleBullet":
+                PlayerBullets.RifleBulletsI += 100;
+                break;
+            case "ShotgunBullet":
+                PlayerBullets.ShotgunBulletsI += 10;
+                break;
+            
         }
     }
 
@@ -125,5 +136,9 @@ public class MainManager : MonoBehaviour
         IsNightB = !IsNightB;
         StartCoroutine(NightDayCycle());
     }
+    
+    
 }
+
+
 
