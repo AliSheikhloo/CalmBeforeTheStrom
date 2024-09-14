@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4d45817a0e7a3024e98253d5187a9237
+guid: 7a1b3cc4ee0628f40a33b71b30990068
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 195.3125
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -82,6 +82,19 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: 12
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,43 +123,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: images_0
+      name: Player_Rifle_0
       rect:
         serializedVersion: 2
-        x: 32
-        y: 84
-        width: 50
-        height: 50
+        x: 131
+        y: 519
+        width: 294
+        height: 462
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3303b0933f73f85449c2f650b89130bf
-      internalID: 2119612555
+      spriteID: 96a9185a4adefea4a916410c90d72381
+      internalID: -676696334
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: images_1
+      name: Player_Rifle_2
       rect:
         serializedVersion: 2
-        x: 85
-        y: 84
-        width: 51
-        height: 50
+        x: 655
+        y: 528
+        width: 240
+        height: 444
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8fcb4188d2f480349b4e0ddd6409073a
-      internalID: 492469038
+      spriteID: d22f1d0715c9bde4981e1bccc8482016
+      internalID: -1415973263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Rifle_3
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 36
+        width: 293
+        height: 442
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f742f84b45d5e545a695008dd4b9e71
+      internalID: -1021511734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Rifle_4
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 28
+        width: 243
+        height: 434
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4364c300726d1e842be4d86de2c1ed4e
+      internalID: 105634879
       vertices: []
       indices: 
       edges: []
@@ -162,8 +217,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      images_0: 2119612555
-      images_1: 492469038
+      Player_Rifle_0: -676696334
+      Player_Rifle_1: 1170396033
+      Player_Rifle_2: -1415973263
+      Player_Rifle_3: -1021511734
+      Player_Rifle_4: 105634879
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

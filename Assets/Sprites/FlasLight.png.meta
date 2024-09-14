@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1e4f00978541dbb47b0133e1ab06514f
+guid: 142091cb8208db340aff2203c8ceda0c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 300
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -121,7 +121,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: FlasLight_1
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 15
+        width: 85
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8445dfdba4e6bb546a5e8a9971f0fa44
+      internalID: 862425147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FlasLight_2
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 7
+        width: 77
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8567bb2276e655459db861e4c141afb
+      internalID: 282594630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FlasLight_4
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 12
+        width: 59
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db53c94b1a108dd4eba73f56d9da3c51
+      internalID: -1092517069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FlasLight_5
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 12
+        width: 84
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 455965f15ddfc204ba87ac86571e9166
+      internalID: -725512821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +216,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      FlasLight_0: 1881442216
+      FlasLight_1: 862425147
+      FlasLight_10: -976967112
+      FlasLight_11: -1590015773
+      FlasLight_2: 282594630
+      FlasLight_3: -1853269643
+      FlasLight_4: -1092517069
+      FlasLight_5: -725512821
+      FlasLight_6: 357828735
+      FlasLight_7: 141807332
+      FlasLight_8: -1360939035
+      FlasLight_9: -1536741602
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

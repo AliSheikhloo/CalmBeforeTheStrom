@@ -37,13 +37,17 @@ public class FarmingController : MonoBehaviour
         {
             if (VARIABLE.gameObject.tag == "WheatSeed" || VARIABLE.gameObject.tag == "CornSeed") 
             {
-                Destroy(VARIABLE.gameObject);
+                Pooling.instance.BackObjectToRepository(VARIABLE.gameObject);
+                //VARIABLE.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 0;
             }
         }
         
         if (SeedType == "Wheat")
         {
-           GameObject gm=Instantiate(Wheat, transform.position, quaternion.identity);
+            GameObject gm = Pooling.instance.ReturnObject("Wheat");
+            gm.transform.SetParent(null);
+            gm.transform.position = transform.position;
+            gm.SetActive(true);
             if (inFront)
             {
                 gm.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 1;
@@ -51,7 +55,11 @@ public class FarmingController : MonoBehaviour
         }
         else
         {
-            GameObject gm=Instantiate(Corn, transform.position, quaternion.identity);
+            print("SDDS");
+            GameObject gm= Pooling.instance.ReturnObject("Corn");
+            gm.transform.SetParent(null);
+            gm.transform.position = transform.position;
+            gm.SetActive(true);
             if (inFront)
             {
                 gm.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 1;

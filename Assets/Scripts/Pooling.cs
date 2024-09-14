@@ -9,6 +9,10 @@ public class Pooling : MonoBehaviour
     public Prefab RifleBullet;
     public Prefab ShotgunBullet;
     public Prefab Cartridge;
+    public Prefab CornSeed;
+    public Prefab Corn;
+    public Prefab WheatSeed;
+    public Prefab Wheat;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +42,32 @@ public class Pooling : MonoBehaviour
             Temp.SetActive(false);
             Cartridge.Objects.Add(Temp);
         }
+        for (int i = 0; i < CornSeed.Count; i++)
+        {
+            GameObject Temp = Instantiate(CornSeed.prefab, transform);
+            Temp.SetActive(false);
+            CornSeed.Objects.Add(Temp);
+        }
+        for (int i = 0; i < Corn.Count; i++)
+        {
+            GameObject Temp = Instantiate(Corn.prefab, transform);
+            Temp.SetActive(false);
+            Corn.Objects.Add(Temp);
+        }
+        for (int i = 0; i < Wheat.Count; i++)
+        {
+            GameObject Temp = Instantiate(Wheat.prefab, transform);
+            Temp.SetActive(false);
+            Wheat.Objects.Add(Temp);
+
+        }
+        for (int i = 0; i < WheatSeed.Count; i++)
+        {
+            GameObject Temp = Instantiate(WheatSeed.prefab, transform);
+            Temp.SetActive(false);
+            WheatSeed.Objects.Add(Temp);
+
+        }
     }
     public GameObject ReturnObject(string ObjectName)
     {
@@ -55,6 +85,18 @@ public class Pooling : MonoBehaviour
                 break;
             case "Cartridge":
                 UsedPrefab = Cartridge;
+                break;
+            case "CornSeed":
+                UsedPrefab = CornSeed;
+                break;
+            case "Corn":
+                UsedPrefab = Corn;
+                break;
+            case "Wheat":
+                UsedPrefab = Wheat;
+                break;
+            case "WheatSeed":
+                UsedPrefab = WheatSeed;
                 break;
         }
         for (int i = 0; i < UsedPrefab.Count; i++)

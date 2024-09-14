@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b56eb0dbb85b74e46bc1e8491a1b3da7
+guid: 8c8ac76560fbc6944be757dff52cc26e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_Sickle_0
+      name: Player_Corn_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 509
-        width: 191
-        height: 451
+        x: 59
+        y: 5
+        width: 146
+        height: 230
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51087b930431dab4f8411f5a3e5faaba
-      internalID: -1563291511
+      spriteID: ea6a2456f8774944f8b96da05c4f072f
+      internalID: 1524505543
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Sickle_1
+      name: Player_Corn_1
       rect:
         serializedVersion: 2
-        x: 273
-        y: 515
-        width: 191
-        height: 441
+        x: 323
+        y: 11
+        width: 120
+        height: 241
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b51ebc529e60a24e83ef3a4859ffe94
-      internalID: -240882478
+      spriteID: 13118b1cfec811d419c8753c34ac4db0
+      internalID: -549744644
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_Sickle_2
+      name: Player_Corn_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 250
-        height: 464
+        x: 589
+        y: 17
+        width: 99
+        height: 229
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,29 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8de7861e6d4517647b8234a6a13f65db
-      internalID: 507309303
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_Sickle_3
-      rect:
-        serializedVersion: 2
-        x: 250
-        y: 0
-        width: 260
-        height: 465
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 77111835f8006594e9fc6c4f24fbe05f
-      internalID: 566739168
+      spriteID: 3a869cde804048b4b8d51ba704d92a12
+      internalID: 2027250600
       vertices: []
       indices: 
       edges: []
@@ -217,10 +196,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Player_Sickle_0: -1563291511
-      Player_Sickle_1: -240882478
-      Player_Sickle_2: 507309303
-      Player_Sickle_3: 566739168
+      Player_Corn_0: 1524505543
+      Player_Corn_1: -549744644
+      Player_Corn_2: 2027250600
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

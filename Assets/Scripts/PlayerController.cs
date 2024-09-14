@@ -62,19 +62,35 @@ public class PlayerController : MonoBehaviour
         {
             HarvestPlants();
         }
-
-        if (Input.GetKey(KeyCode.N))
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+            _MainManager.Buy("Rifle");
+            _Animator.SetTrigger("Rifle");
+        }
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+            _MainManager.Buy("Rifle");
+        }
+        if (Input.GetKey(KeyCode.Alpha3))
         {
             _MainManager.Buy("ShotGun");
+            _Animator.SetTrigger("Shotgun");
         }
         
-        if (Input.GetKey(KeyCode.B))
+        if (Input.GetKey(KeyCode.Alpha4))
         {
             _MainManager.SwichTool(MainManager.Tools.sickle);
+            _Animator.SetTrigger("Sickle");
         }
-        if (Input.GetKey(KeyCode.H))
+        if (Input.GetKey(KeyCode.Alpha6))
+        {
+            _MainManager.SwichTool(MainManager.Tools.WheatSeed);
+            _Animator.SetTrigger("Wheat");
+        }
+        if (Input.GetKey(KeyCode.Alpha5))
         {
             _MainManager.SwichTool(MainManager.Tools.CornSeed);
+            _Animator.SetTrigger("Corn");
         }
     }
 
@@ -92,16 +108,19 @@ public class PlayerController : MonoBehaviour
             {
                 CurrentSpeedF = RunningSpeedF;
                 IsShiftPressedB = true;
+                _Animator.SetFloat("Run", 1.5f);
             }
             else
             {
                 CurrentSpeedF = WalkingSpeedF;
                 IsShiftPressedB = false;
+                _Animator.SetFloat("Run", 1);
             }
         }
         else
         {
             CurrentSpeedF = WalkingSpeedF;
+            _Animator.SetFloat("Run", 1);
         }
 
         if (MoveDir.x < 0)
@@ -145,11 +164,17 @@ public class PlayerController : MonoBehaviour
                 switch (PlayerInHand)
                 {
                     case MainManager.Tools.WheatSeed:
-                        Instantiate(WheatSeedPrefabG, VARIABLE.transform.position, quaternion.identity, Seeds.transform);
+                        GameObject Temp1 =  Pooling.instance.ReturnObject("WheatSeed");
+                        Temp1.transform.position = VARIABLE.transform.position;
+                        Temp1.transform.SetParent(Seeds.transform);
+                        Temp1.SetActive(true);
                         FC.SeedType = "Wheat";
                         break;
                     case MainManager.Tools.CornSeed:
-                        Instantiate(CornSeedPrefabG, VARIABLE.transform.position, quaternion.identity, Seeds.transform);
+                        GameObject Temp2 = Pooling.instance.ReturnObject("CornSeed");
+                        Temp2.transform.position = VARIABLE.transform.position;
+                        Temp2.transform.SetParent(Seeds.transform);
+                        Temp2.SetActive(true);
                         FC.SeedType = "Corn";
                         break;
                 }
@@ -174,17 +199,19 @@ public class PlayerController : MonoBehaviour
 
             if (VARIABLE.gameObject.tag == "Wheat")
             {
-                Destroy(VARIABLE.gameObject);
+                
                 GameObject prefab=Instantiate(HarvestingEffectPrefabG, VARIABLE.transform.position, quaternion.identity);
                 StartCoroutine(DestroyHarvestingParticleSystem(prefab));
+                Pooling.instance.BackObjectToRepository(VARIABLE.gameObject);
 
             }
 
             if (VARIABLE.gameObject.tag == "Corn")
             {
-                Destroy(VARIABLE.gameObject);
+                
                 GameObject prefab=Instantiate(HarvestingEffectPrefabG, VARIABLE.transform.position, quaternion.identity);
                 StartCoroutine(DestroyHarvestingParticleSystem(prefab));
+                Pooling.instance.BackObjectToRepository(VARIABLE.gameObject);
             }
         }
 

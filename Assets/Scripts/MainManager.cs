@@ -24,6 +24,11 @@ public class MainManager : MonoBehaviour
 
     [SerializeField] private ParticleSystem RainEffect;
     [SerializeField] private Light2D GlobalLight;
+    [SerializeField] private GameObject SpotLight;
+    [SerializeField] private int NightTimeI;
+    [SerializeField] private int DayTimeI;
+    [Range(0, 100)]
+    [SerializeField] private int LightIntensity;
     // Start is called before the first frame update
     void Start()
     {
@@ -87,31 +92,34 @@ public class MainManager : MonoBehaviour
         int time;
         if (IsNightB)
         {
-            time = 5;
+            time = DayTimeI;
         }
         else
         {
-            time = 2;
+            time = NightTimeI;
         }
         yield return new WaitForSeconds(time);
         if (!IsNightB)
         {
-            for (int i = 0; i < 95; i++)
+            SpotLight.SetActive(true);
+            for (int i = 0; i < 100 - LightIntensity; i++)
             {
                 GlobalLight.intensity -= .01f;
                 yield return null;
             }
             RainEffect.Play();
+            
         }
         else
         {
             RainEffect.Stop();
-            for (int i = 0; i < 95; i++)
+            for (int i = 0; i < 100 - LightIntensity; i++)
             {
                 GlobalLight.intensity += .01f;
                 yield return null;
             }
             CurrentDay++;
+            SpotLight.SetActive(false);
         }
 
         IsNightB = !IsNightB;
