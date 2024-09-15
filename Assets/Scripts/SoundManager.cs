@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip Pistol;
     [SerializeField] private AudioClip Rifle;
     [SerializeField] private AudioClip Plant;
+    [SerializeField] private AudioClip Dead;
     public static SoundManager instance;
     public AudioSource PlayerSFX;
     public AudioSource WalkSFX;
@@ -51,6 +52,12 @@ public class SoundManager : MonoBehaviour
                 PlayerSFX.loop = false;
                 PlayerSFX.Play();
                 break;
+            case "Dead":
+                print(SoundName);
+                PlayerSFX.clip = Dead;
+                PlayerSFX.loop = false;
+                PlayerSFX.Play();
+                break;
         }
     }
     void WalkSound()
@@ -72,4 +79,5 @@ public class SoundManager : MonoBehaviour
     {
         ThunderAndLightning.Play();
     }
+    
 }

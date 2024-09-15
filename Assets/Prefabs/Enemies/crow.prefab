@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 2609243522313026677}
   - component: {fileID: 1897765748154160847}
   - component: {fileID: 1576463127987105686}
-  - component: {fileID: 4868360274871474422}
   - component: {fileID: 1328984299242145730}
+  - component: {fileID: 7122434306083828097}
   m_Layer: 8
-  m_Name: Boar
+  m_Name: crow
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 543293331
   m_SortingLayer: 4
   m_SortingOrder: 2
-  m_Sprite: {fileID: 1084868964, guid: 3a8d7f0ccaded7540b1a906edc7d428d, type: 3}
+  m_Sprite: {fileID: -402091615, guid: 2c59b20130eeec24e9fbb03d57c9c353, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +99,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1.5
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  Health: 3
+  Health: 1
   DeadEffect: {fileID: 5583578173700633774, guid: 2790955d1e8a47f4087d45e7ed9a7d81, type: 3}
   hitForce: 1
 --- !u!50 &1576463127987105686
@@ -154,27 +154,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!95 &4868360274871474422
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8893423990535930631}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ef0401b075ca6134ea6630ab7e1b7474, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!70 &1328984299242145730
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -210,3 +189,24 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2.26, y: 1.39}
   m_Direction: 1
+--- !u!95 &7122434306083828097
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8893423990535930631}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e4e0ac60c25390e4e9734010a304e77e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

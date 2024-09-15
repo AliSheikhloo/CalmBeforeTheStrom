@@ -12,7 +12,7 @@ public class GunController : MonoBehaviour
 
     public int AccuracyI;
     public int RecoilI;
-
+    [SerializeField] private Vector3 BulletOffset;
     [SerializeField] private string BulletPrefabS;
     [SerializeField] private Animator CameraAnimator;
     [SerializeField] private Animator FireFlashAnimator;
@@ -34,7 +34,7 @@ public class GunController : MonoBehaviour
     {
 //        if (_PlayerController.IsShiftPressedB) return;
 
-        if (Input.GetKeyDown(KeyCode.Space) && IsGunLoaded)
+        if (Input.GetKeyDown(KeyCode.Space) && IsGunLoaded && !_PlayerController.GameOverB)
         {
 
             switch (ThisGunType)
@@ -135,7 +135,7 @@ public class GunController : MonoBehaviour
         
         GameObject Bullet = Pooling.instance.ReturnObject(BulletPrefabS);
         Bullet.transform.SetParent(null);
-        Bullet.transform.position = transform.position;
+        Bullet.transform.position = transform.position + BulletOffset;
         Bullet.transform.rotation = Quaternion.Euler(0, 0, Random.Range(-AccuracyI, AccuracyI));
         Bullet.SetActive(true);
     }

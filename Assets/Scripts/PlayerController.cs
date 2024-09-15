@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] GameObject SellStoreHelp;
+    [SerializeField] GameObject GunStoreHelp;
+    public bool GameOverB = false;
+    [SerializeField] GameObject GameOverPanel;
+    [SerializeField] ParticleSystem DeadEffect;
     public MainManager.Tools PlayerInHand = MainManager.Tools.WheatSeed;
     private MainManager _MainManager;
     
@@ -57,69 +62,61 @@ public class PlayerController : MonoBehaviour
                 _Animator.SetBool("Walk", false);
             }
 
-            if ((PlayerInHand == MainManager.Tools.WheatSeed || PlayerInHand == MainManager.Tools.CornSeed) &&
-                Input.GetKey(KeyCode.Space))
-            {
-                PlantSeeds();
-            }
+        if ((PlayerInHand == MainManager.Tools.WheatSeed || PlayerInHand== MainManager.Tools.CornSeed) && Input.GetKey(KeyCode.Space))
+        {
+            PlantSeeds();
+        }
 
-            if (PlayerInHand == MainManager.Tools.sickle && Input.GetKey(KeyCode.Space))
-            {
-                HarvestPlants();
-            }
+        if (PlayerInHand == MainManager.Tools.sickle&& Input.GetKey(KeyCode.Space))
+        {
+            HarvestPlants();
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            _MainManager.Buy("Rifle");
+            _Animator.SetTrigger("Rifle");
+            SoundManager.instance.PlayerSFX.Stop();
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            _MainManager.Buy("Pistol");
+            _Animator.SetTrigger("Pistol");
+        }
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+            _MainManager.SwichTool(MainManager.Tools.Pistol);
+            _Animator.SetTrigger("Pistol");
+            SoundManager.instance.PlayerSFX.Stop();
+        }
+        if (Input.GetKey(KeyCode.M))
+        {
+            _MainManager.Buy("ShotGun");
+            _Animator.SetTrigger("Shotgun");
+            SoundManager.instance.PlayerSFX.Stop();
+        }
+        
+        if (Input.GetKey(KeyCode.Alpha4))
+        {
+            _MainManager.SwichTool(MainManager.Tools.sickle);
+            _Animator.SetTrigger("Sickle");
+            SoundManager.instance.PlayerSFX.Stop();
+        }
+        if (Input.GetKey(KeyCode.Alpha6))
+        {
+            _MainManager.SwichTool(MainManager.Tools.WheatSeed);
+            _Animator.SetTrigger("Wheat");
+            SoundManager.instance.PlayerSFX.Stop();
+        }
+        if (Input.GetKey(KeyCode.Alpha5))
+        {
+            _MainManager.SwichTool(MainManager.Tools.CornSeed);
+            _Animator.SetTrigger("Corn");
+            SoundManager.instance.PlayerSFX.Stop();
+        }
 
-            if (Input.GetKeyDown(KeyCode.N))
-            {
-                _MainManager.Buy("Rifle");
-                _Animator.SetTrigger("Rifle");
-                SoundManager.instance.PlayerSFX.Stop();
-            }
-
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                _MainManager.Buy("Pistol");
-                _Animator.SetTrigger("Pistol");
-            }
-
-            if (Input.GetKey(KeyCode.Alpha1))
-            {
-                _MainManager.SwichTool(MainManager.Tools.Pistol);
-                _Animator.SetTrigger("Pistol");
-                SoundManager.instance.PlayerSFX.Stop();
-            }
-
-            if (Input.GetKey(KeyCode.M))
-            {
-                _MainManager.Buy("ShotGun");
-                _Animator.SetTrigger("Shotgun");
-                SoundManager.instance.PlayerSFX.Stop();
-            }
-
-            if (Input.GetKey(KeyCode.Alpha4))
-            {
-                _MainManager.SwichTool(MainManager.Tools.sickle);
-                _Animator.SetTrigger("Sickle");
-                SoundManager.instance.PlayerSFX.Stop();
-            }
-
-            if (Input.GetKey(KeyCode.Alpha6))
-            {
-                _MainManager.SwichTool(MainManager.Tools.WheatSeed);
-                _Animator.SetTrigger("Wheat");
-                SoundManager.instance.PlayerSFX.Stop();
-            }
-
-            if (Input.GetKey(KeyCode.Alpha5))
-            {
-                _MainManager.SwichTool(MainManager.Tools.CornSeed);
-                _Animator.SetTrigger("Corn");
-                SoundManager.instance.PlayerSFX.Stop();
-            }
-
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                _MainManager.Sell("Wheats");
-            }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            _MainManager.Sell("Wheats");
         }
     }
 
@@ -259,13 +256,69 @@ public class PlayerController : MonoBehaviour
     {
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
         HealthI--;
+        if (HealthI == 0)
+        {
+            GameOverB = true;
+            GameOverPanel.SetActive(true);
+            SoundManager.instance.PlaySound("Dead");
+            Instantiate(DeadEffect, transform.position, Quaternion.identity);
+            gameObject.SetActive(false);
+            _MainManager.gameObject.SetActive(false);
+        }
         float mirror = -transform.localScale.x;
-        PlayerRB.AddForce(((transform.right*mirror))*10,ForceMode2D.Impulse);
-        spriteRenderer.color=Color.red;
-        yield return new WaitForSeconds(.2f);
-        spriteRenderer.color=Color.white;
+        PlayerRB.AddForce(((transform.right * mirror)) * 10, ForceMode2D.Impulse);
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(.1f);
+        spriteRenderer.color = Color.white;
     }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.name == "SellStore")
+        {
+            SellStoreHelp.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                _MainManager.Sell();
+            }
 
+        }
+        if (collision.name == "GunStore")
+        {
+            GunStoreHelp.SetActive(true);
+
+
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                _MainManager.Buy("Rifle");
+                _Animator.SetTrigger("Rifle");
+                SoundManager.instance.PlayerSFX.Stop();
+            }
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                _MainManager.Buy("Pistol");
+                _Animator.SetTrigger("Pistol");
+            }
+            if (Input.GetKey(KeyCode.M))
+            {
+                _MainManager.Buy("ShotGun");
+                _Animator.SetTrigger("Shotgun");
+                SoundManager.instance.PlayerSFX.Stop();
+            }
+
+
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.name == "GunStore")
+        {
+            GunStoreHelp.SetActive(false);
+        }
+        if (collision.name == "SellStore")
+        {
+            SellStoreHelp.SetActive(false);
+        }
+    }
 }
 public class Inventory
 {

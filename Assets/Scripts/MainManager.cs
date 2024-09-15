@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -28,6 +27,8 @@ public class MainManager : MonoBehaviour
     public int EnemySpawnRate;
     public bool isGameStarted;
     [SerializeField] private GameObject Enemy;
+    [SerializeField] private GameObject[] Enemies;
+    
     [SerializeField] private GameObject[] EnemySpawns;
     
     [SerializeField] private ParticleSystem RainEffect;
@@ -42,7 +43,7 @@ public class MainManager : MonoBehaviour
 
     [SerializeField] private Text[] Texts; 
     // Start is called before the first frame update
-    public void StartGame()
+    void Start()
     {
         Inventory.RifleBulletsI = 100;
         Inventory.ShotgunBulletsI = 10;
@@ -183,7 +184,7 @@ public class MainManager : MonoBehaviour
             }
 
             Vector3 spawn = EnemySpawns[Random.Range(0, EnemySpawns.Length)].transform.position;
-            Instantiate(Enemy, new Vector3(spawn.x, spawn.y + Random.Range(-5, 5)), quaternion.identity);
+            Instantiate(Enemies[Random.Range(0,Enemies.Length)], new Vector3(spawn.x, spawn.y + Random.Range(-5, 5)), quaternion.identity);
 
         }
 

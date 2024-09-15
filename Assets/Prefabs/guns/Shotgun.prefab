@@ -47,6 +47,7 @@ MonoBehaviour:
   _PlayerController: {fileID: 0}
   AccuracyI: 10
   RecoilI: 3
+  BulletOffset: {x: 0.3, y: 0.15, z: 0}
   BulletPrefabS: ShotgunBullet
   CameraAnimator: {fileID: 0}
   FireFlashAnimator: {fileID: 0}
