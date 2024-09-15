@@ -46,70 +46,80 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        if (_MainManager.isGameStarted)
         {
-            _Animator.SetBool("Walk", true);
-        }
-        else
-        {
-            _Animator.SetBool("Walk", false);
-        }
+            if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+            {
+                _Animator.SetBool("Walk", true);
+            }
+            else
+            {
+                _Animator.SetBool("Walk", false);
+            }
 
-        if ((PlayerInHand == MainManager.Tools.WheatSeed || PlayerInHand== MainManager.Tools.CornSeed) && Input.GetKey(KeyCode.Space))
-        {
-            PlantSeeds();
-        }
+            if ((PlayerInHand == MainManager.Tools.WheatSeed || PlayerInHand == MainManager.Tools.CornSeed) &&
+                Input.GetKey(KeyCode.Space))
+            {
+                PlantSeeds();
+            }
 
-        if (PlayerInHand == MainManager.Tools.sickle&& Input.GetKey(KeyCode.Space))
-        {
-            HarvestPlants();
-        }
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            _MainManager.Buy("Rifle");
-            _Animator.SetTrigger("Rifle");
-            SoundManager.instance.PlayerSFX.Stop();
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            _MainManager.Buy("Pistol");
-            _Animator.SetTrigger("Pistol");
-        }
-        if (Input.GetKey(KeyCode.Alpha1))
-        {
-            _MainManager.SwichTool(MainManager.Tools.Pistol);
-            _Animator.SetTrigger("Pistol");
-            SoundManager.instance.PlayerSFX.Stop();
-        }
-        if (Input.GetKey(KeyCode.M))
-        {
-            _MainManager.Buy("ShotGun");
-            _Animator.SetTrigger("Shotgun");
-            SoundManager.instance.PlayerSFX.Stop();
-        }
-        
-        if (Input.GetKey(KeyCode.Alpha4))
-        {
-            _MainManager.SwichTool(MainManager.Tools.sickle);
-            _Animator.SetTrigger("Sickle");
-            SoundManager.instance.PlayerSFX.Stop();
-        }
-        if (Input.GetKey(KeyCode.Alpha6))
-        {
-            _MainManager.SwichTool(MainManager.Tools.WheatSeed);
-            _Animator.SetTrigger("Wheat");
-            SoundManager.instance.PlayerSFX.Stop();
-        }
-        if (Input.GetKey(KeyCode.Alpha5))
-        {
-            _MainManager.SwichTool(MainManager.Tools.CornSeed);
-            _Animator.SetTrigger("Corn");
-            SoundManager.instance.PlayerSFX.Stop();
-        }
+            if (PlayerInHand == MainManager.Tools.sickle && Input.GetKey(KeyCode.Space))
+            {
+                HarvestPlants();
+            }
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            _MainManager.Sell("Wheats");
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                _MainManager.Buy("Rifle");
+                _Animator.SetTrigger("Rifle");
+                SoundManager.instance.PlayerSFX.Stop();
+            }
+
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                _MainManager.Buy("Pistol");
+                _Animator.SetTrigger("Pistol");
+            }
+
+            if (Input.GetKey(KeyCode.Alpha1))
+            {
+                _MainManager.SwichTool(MainManager.Tools.Pistol);
+                _Animator.SetTrigger("Pistol");
+                SoundManager.instance.PlayerSFX.Stop();
+            }
+
+            if (Input.GetKey(KeyCode.M))
+            {
+                _MainManager.Buy("ShotGun");
+                _Animator.SetTrigger("Shotgun");
+                SoundManager.instance.PlayerSFX.Stop();
+            }
+
+            if (Input.GetKey(KeyCode.Alpha4))
+            {
+                _MainManager.SwichTool(MainManager.Tools.sickle);
+                _Animator.SetTrigger("Sickle");
+                SoundManager.instance.PlayerSFX.Stop();
+            }
+
+            if (Input.GetKey(KeyCode.Alpha6))
+            {
+                _MainManager.SwichTool(MainManager.Tools.WheatSeed);
+                _Animator.SetTrigger("Wheat");
+                SoundManager.instance.PlayerSFX.Stop();
+            }
+
+            if (Input.GetKey(KeyCode.Alpha5))
+            {
+                _MainManager.SwichTool(MainManager.Tools.CornSeed);
+                _Animator.SetTrigger("Corn");
+                SoundManager.instance.PlayerSFX.Stop();
+            }
+
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                _MainManager.Sell("Wheats");
+            }
         }
     }
 

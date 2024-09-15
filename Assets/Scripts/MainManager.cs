@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class MainManager : MonoBehaviour
@@ -24,6 +26,7 @@ public class MainManager : MonoBehaviour
     public bool IsNightB;
     public static int CurrentDay;
     public int EnemySpawnRate;
+    public bool isGameStarted;
     [SerializeField] private GameObject Enemy;
     [SerializeField] private GameObject[] EnemySpawns;
     
@@ -32,9 +35,14 @@ public class MainManager : MonoBehaviour
     [SerializeField] private GameObject SpotLight;
     [SerializeField] private int NightTimeI;
     [SerializeField] private int DayTimeI;
-    
+
+
+
+    [SerializeField] private GameObject[] UiElements;
+
+    [SerializeField] private Text[] Texts; 
     // Start is called before the first frame update
-    void Start()
+    public void StartGame()
     {
         Inventory.RifleBulletsI = 100;
         Inventory.ShotgunBulletsI = 10;
@@ -45,8 +53,21 @@ public class MainManager : MonoBehaviour
         //InstantiateTool(_PlayerController.PlayerInHand);
         Application.targetFrameRate = 120;
         StartCoroutine(NightDayCycle());
+        
+        UiElements[0].SetActive(false);
+        UiElements[1].SetActive(true);
+        isGameStarted = true;
+        
     }
 
+    private void Update()
+    {
+        Texts[0].text = Inventory.RifleBulletsI.ToString();
+        Texts[1].text = Inventory.ShotgunBulletsI.ToString();
+        Texts[2].text = Inventory.Wheats.ToString();
+        Texts[3].text = Inventory.Corns.ToString();
+        Texts[4].text = Inventory.Coins.ToString();
+    }
 
     public void SwichTool(Tools NextTool)
     {
