@@ -64,7 +64,7 @@ public class GunController : MonoBehaviour
 
     IEnumerator FirePistol()
     {
-
+        SoundManager.instance.PlaySound("Pistol");
         InstantiateBullet();
         ThrowCartridge();
         Recoil();
@@ -79,6 +79,7 @@ public class GunController : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     IEnumerator FireRifle()
     {
+        SoundManager.instance.PlaySound("Rifle");
         while (Input.GetKey(KeyCode.Space))
         {
             InstantiateBullet();
@@ -91,6 +92,7 @@ public class GunController : MonoBehaviour
             
             yield return null;
         }
+        SoundManager.instance.PlayerSFX.Stop();
         CameraAnimator.SetBool("CamShakeBool",false);
         FireFlashAnimator.SetBool("IsShooting",false);
         FireFlashAnimator.GetComponent<SpriteRenderer>().sortingOrder = -1;
@@ -99,6 +101,7 @@ public class GunController : MonoBehaviour
 
     IEnumerator FireShotgun()
     {
+        SoundManager.instance.PlaySound("Shotgun");
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)

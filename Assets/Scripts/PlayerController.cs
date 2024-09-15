@@ -66,31 +66,38 @@ public class PlayerController : MonoBehaviour
         {
             _MainManager.Buy("Rifle");
             _Animator.SetTrigger("Rifle");
+            SoundManager.instance.PlayerSFX.Stop();
         }
         if (Input.GetKey(KeyCode.Alpha1))
         {
-            _MainManager.Buy("Rifle");
+            _MainManager.SwichTool(MainManager.Tools.Pistol);
+            _Animator.SetTrigger("Pistol");
+            SoundManager.instance.PlayerSFX.Stop();
         }
         if (Input.GetKey(KeyCode.Alpha3))
         {
             _MainManager.Buy("ShotGun");
             _Animator.SetTrigger("Shotgun");
+            SoundManager.instance.PlayerSFX.Stop();
         }
         
         if (Input.GetKey(KeyCode.Alpha4))
         {
             _MainManager.SwichTool(MainManager.Tools.sickle);
             _Animator.SetTrigger("Sickle");
+            SoundManager.instance.PlayerSFX.Stop();
         }
         if (Input.GetKey(KeyCode.Alpha6))
         {
             _MainManager.SwichTool(MainManager.Tools.WheatSeed);
             _Animator.SetTrigger("Wheat");
+            SoundManager.instance.PlayerSFX.Stop();
         }
         if (Input.GetKey(KeyCode.Alpha5))
         {
             _MainManager.SwichTool(MainManager.Tools.CornSeed);
             _Animator.SetTrigger("Corn");
+            SoundManager.instance.PlayerSFX.Stop();
         }
     }
 
@@ -161,6 +168,7 @@ public class PlayerController : MonoBehaviour
             if (VARIABLE.gameObject.tag == "SeedsSpawner" && !FC.isPlant)
             {
                 FC.isPlant = true;
+                SoundManager.instance.PlaySound("Plant");
                 switch (PlayerInHand)
                 {
                     case MainManager.Tools.WheatSeed:
@@ -190,6 +198,7 @@ public class PlayerController : MonoBehaviour
             
         foreach (var VARIABLE in colliders)
         {
+
             FarmingController FC = VARIABLE.gameObject.GetComponent<FarmingController>();
             if (VARIABLE.gameObject.tag == "SeedsSpawner"&& FC.isGrown && FC.isPlant)
             {
@@ -199,7 +208,7 @@ public class PlayerController : MonoBehaviour
 
             if (VARIABLE.gameObject.tag == "Wheat")
             {
-                
+                SoundManager.instance.PlaySound("Plant");
                 GameObject prefab=Instantiate(HarvestingEffectPrefabG, VARIABLE.transform.position, quaternion.identity);
                 StartCoroutine(DestroyHarvestingParticleSystem(prefab));
                 Pooling.instance.BackObjectToRepository(VARIABLE.gameObject);
@@ -208,7 +217,7 @@ public class PlayerController : MonoBehaviour
 
             if (VARIABLE.gameObject.tag == "Corn")
             {
-                
+                SoundManager.instance.PlaySound("Plant");
                 GameObject prefab=Instantiate(HarvestingEffectPrefabG, VARIABLE.transform.position, quaternion.identity);
                 StartCoroutine(DestroyHarvestingParticleSystem(prefab));
                 Pooling.instance.BackObjectToRepository(VARIABLE.gameObject);
