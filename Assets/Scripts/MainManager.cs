@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using Random = UnityEngine.Random;
 
 public class MainManager : MonoBehaviour
 {
     public PlayerController _PlayerController;
     public int PlayerMoney;
+    
     public enum Tools
     {
         Pistol,
@@ -21,7 +23,10 @@ public class MainManager : MonoBehaviour
 
     public bool IsNightB;
     public static int CurrentDay;
-
+    public int EnemySpawnRate;
+    [SerializeField] private GameObject Enemy;
+    [SerializeField] private GameObject[] EnemySpawns;
+    
     [SerializeField] private ParticleSystem RainEffect;
     [SerializeField] private Light2D GlobalLight;
     [SerializeField] private GameObject SpotLight;
@@ -32,6 +37,11 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Inventory.RifleBulletsI = 100;
+        Inventory.ShotgunBulletsI = 10;
+        Inventory.isRifleBought=true;
+        Inventory.isShotgunBought = true;
+
         _PlayerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         //InstantiateTool(_PlayerController.PlayerInHand);
         Application.targetFrameRate = 120;
@@ -84,6 +94,29 @@ public class MainManager : MonoBehaviour
             case "CornSeed":
                 SwichTool(Tools.CornSeed);
                 break;
+            case "RifleBullet":
+                Inventory.RifleBulletsI += 100;
+                break;
+            case "ShotgunBullet":
+                Inventory.ShotgunBulletsI += 10;
+                break;
+            
+        }
+    }
+
+    public void Sell(string obj)
+    {
+        switch (obj)
+        {
+            case "Wheats" :
+                Inventory.Coins += Inventory.Wheats;
+                Inventory.Wheats = 0;
+                break;
+            case "Corns" :
+                Inventory.Coins += Inventory.Corns*2;
+                Inventory.Corns = 0;
+                break;
+
         }
     }
 
@@ -108,7 +141,7 @@ public class MainManager : MonoBehaviour
                 yield return null;
             }
             RainEffect.Play();
-            
+            StartCoroutine(SpawnEnemies(CurrentDay*2));
         }
         else
         {
@@ -125,5 +158,23 @@ public class MainManager : MonoBehaviour
         IsNightB = !IsNightB;
         StartCoroutine(NightDayCycle());
     }
+
+    IEnumerator SpawnEnemies(int NumberOfEnemies)
+    {
+        for (int j = 0; j < NumberOfEnemies; j++)
+        {
+            for (int i = 0; i < EnemySpawnRate; i++)
+            {
+                yield return null;
+            }
+
+            Vector3 spawn = EnemySpawns[Random.Range(0, EnemySpawns.Length)].transform.position;
+            Instantiate(Enemy, new Vector3(spawn.x, spawn.y + Random.Range(-5, 5)), quaternion.identity);
+
+        }
+
+    }
 }
+
+
 

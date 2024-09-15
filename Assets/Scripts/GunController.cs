@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using Random = UnityEngine.Random;
 
 public class GunController : MonoBehaviour
@@ -82,14 +83,18 @@ public class GunController : MonoBehaviour
         SoundManager.instance.PlaySound("Rifle");
         while (Input.GetKey(KeyCode.Space))
         {
+            if (Inventory.RifleBulletsI == 0)
+            {
+                break;
+            }
             InstantiateBullet();
-            ThrowCartridge();
             CameraAnimator.SetBool("CamShakeBool",true);
             FireFlashAnimator.SetBool("IsShooting",true);
             FireFlashAnimator.GetComponent<SpriteRenderer>().sortingOrder = 1;
             Recoil();
             yield return new WaitForSeconds(.1f);
-            
+            ThrowCartridge();
+            Inventory.RifleBulletsI--;
             yield return null;
         }
         SoundManager.instance.PlayerSFX.Stop();
@@ -101,24 +106,28 @@ public class GunController : MonoBehaviour
 
     IEnumerator FireShotgun()
     {
-        SoundManager.instance.PlaySound("Shotgun");
-        for (int i = 0; i < 3; i++)
+        
+        if (Inventory.ShotgunBulletsI != 0)
         {
-            for (int j = 0; j < 3; j++)
+            SoundManager.instance.PlaySound("Shotgun");
+            for (int i = 0; i < 3; i++)
             {
-                InstantiateBullet();
-                Recoil();
-                CameraAnimator.SetTrigger("CamShakeTrigger");
-                CameraAnimator.SetBool("CamShakeBool",false);
-                FireFlashAnimator.SetTrigger("Shoot");
-                FireFlashAnimator.SetBool("IsShooting",false);
+                for (int j = 0; j < 3; j++)
+                {
+                    InstantiateBullet();
+                }
+                yield return null;
             }
-            yield return null;
+            Inventory.ShotgunBulletsI--;
+            CameraAnimator.SetTrigger("CamShakeTrigger");
+            CameraAnimator.SetBool("CamShakeBool", false);
+            FireFlashAnimator.SetTrigger("Shoot");
+            FireFlashAnimator.SetBool("IsShooting", false);
+            Recoil();
+            yield return new WaitForSeconds(.5f);
+            ThrowCartridge();
+            IsGunLoaded = true;
         }
-
-        yield return new WaitForSeconds(.5f);
-        ThrowCartridge();
-        IsGunLoaded = true;
     }
 
     void InstantiateBullet()

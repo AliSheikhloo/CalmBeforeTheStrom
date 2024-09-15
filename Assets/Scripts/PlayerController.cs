@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     public bool IsShooting = false;
     public bool IsPlayerLookingLeft;
 
+    public int HealthI = 10;
+
     //private bool IsJumpFinished = true;
 
     // Start is called before the first frame update
@@ -62,11 +64,16 @@ public class PlayerController : MonoBehaviour
         {
             HarvestPlants();
         }
-        if (Input.GetKey(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.N))
         {
             _MainManager.Buy("Rifle");
             _Animator.SetTrigger("Rifle");
             SoundManager.instance.PlayerSFX.Stop();
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            _MainManager.Buy("Pistol");
+            _Animator.SetTrigger("Pistol");
         }
         if (Input.GetKey(KeyCode.Alpha1))
         {
@@ -74,7 +81,7 @@ public class PlayerController : MonoBehaviour
             _Animator.SetTrigger("Pistol");
             SoundManager.instance.PlayerSFX.Stop();
         }
-        if (Input.GetKey(KeyCode.Alpha3))
+        if (Input.GetKey(KeyCode.M))
         {
             _MainManager.Buy("ShotGun");
             _Animator.SetTrigger("Shotgun");
@@ -98,6 +105,11 @@ public class PlayerController : MonoBehaviour
             _MainManager.SwichTool(MainManager.Tools.CornSeed);
             _Animator.SetTrigger("Corn");
             SoundManager.instance.PlayerSFX.Stop();
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            _MainManager.Sell("Wheats");
         }
     }
 
@@ -212,7 +224,7 @@ public class PlayerController : MonoBehaviour
                 GameObject prefab=Instantiate(HarvestingEffectPrefabG, VARIABLE.transform.position, quaternion.identity);
                 StartCoroutine(DestroyHarvestingParticleSystem(prefab));
                 Pooling.instance.BackObjectToRepository(VARIABLE.gameObject);
-
+                Inventory.Wheats++;
             }
 
             if (VARIABLE.gameObject.tag == "Corn")
@@ -221,6 +233,7 @@ public class PlayerController : MonoBehaviour
                 GameObject prefab=Instantiate(HarvestingEffectPrefabG, VARIABLE.transform.position, quaternion.identity);
                 StartCoroutine(DestroyHarvestingParticleSystem(prefab));
                 Pooling.instance.BackObjectToRepository(VARIABLE.gameObject);
+                Inventory.Corns++;
             }
         }
 
@@ -232,4 +245,25 @@ public class PlayerController : MonoBehaviour
         Destroy(prefab);
     }
 
+    public IEnumerator Damage()
+    {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        HealthI--;
+        float mirror = -transform.localScale.x;
+        PlayerRB.AddForce(((transform.right*mirror))*10,ForceMode2D.Impulse);
+        spriteRenderer.color=Color.red;
+        yield return new WaitForSeconds(.2f);
+        spriteRenderer.color=Color.white;
+    }
+
+}
+public class Inventory
+{
+    public static int RifleBulletsI;
+    public static int ShotgunBulletsI;
+    public static int Wheats;
+    public static int Corns;
+    public static int Coins;
+    public static bool isRifleBought;
+    public static bool isShotgunBought;
 }

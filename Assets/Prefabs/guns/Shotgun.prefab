@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _PlayerController: {fileID: 0}
-  AccuracyI: 7
-  RecoilI: 1
+  AccuracyI: 10
+  RecoilI: 3
   BulletPrefabS: ShotgunBullet
   CameraAnimator: {fileID: 0}
   FireFlashAnimator: {fileID: 0}

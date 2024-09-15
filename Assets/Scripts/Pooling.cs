@@ -13,59 +13,68 @@ public class Pooling : MonoBehaviour
     public Prefab Corn;
     public Prefab WheatSeed;
     public Prefab Wheat;
+    public Prefab HitEffect;
     // Start is called before the first frame update
     void Start()
     {
         instance = GetComponent<Pooling>();
 
+        GameObject Temp;
         for (int i = 0; i < PistolBullet.Count; i++)
         {
-            GameObject Temp = Instantiate(PistolBullet.prefab, transform);
+            Temp = Instantiate(PistolBullet.prefab, transform);
             Temp.SetActive(false);
             PistolBullet.Objects.Add(Temp);
         }
         for (int i = 0; i < RifleBullet.Count; i++)
         {
-            GameObject Temp = Instantiate(RifleBullet.prefab, transform);
+            Temp = Instantiate(RifleBullet.prefab, transform);
             Temp.SetActive(false);
             RifleBullet.Objects.Add(Temp);
         }
         for (int i = 0; i < ShotgunBullet.Count; i++)
         {
-            GameObject Temp = Instantiate(ShotgunBullet.prefab, transform);
+            Temp = Instantiate(ShotgunBullet.prefab, transform);
             Temp.SetActive(false);
             ShotgunBullet.Objects.Add(Temp);
         }
         for (int i = 0; i < Cartridge.Count; i++)
         {
-            GameObject Temp = Instantiate(Cartridge.prefab, transform);
+            Temp = Instantiate(Cartridge.prefab, transform);
             Temp.SetActive(false);
             Cartridge.Objects.Add(Temp);
         }
         for (int i = 0; i < CornSeed.Count; i++)
         {
-            GameObject Temp = Instantiate(CornSeed.prefab, transform);
+            Temp = Instantiate(CornSeed.prefab, transform);
             Temp.SetActive(false);
             CornSeed.Objects.Add(Temp);
         }
         for (int i = 0; i < Corn.Count; i++)
         {
-            GameObject Temp = Instantiate(Corn.prefab, transform);
+            Temp = Instantiate(Corn.prefab, transform);
             Temp.SetActive(false);
             Corn.Objects.Add(Temp);
         }
         for (int i = 0; i < Wheat.Count; i++)
         {
-            GameObject Temp = Instantiate(Wheat.prefab, transform);
+            Temp = Instantiate(Wheat.prefab, transform);
             Temp.SetActive(false);
             Wheat.Objects.Add(Temp);
 
         }
         for (int i = 0; i < WheatSeed.Count; i++)
         {
-            GameObject Temp = Instantiate(WheatSeed.prefab, transform);
+            Temp = Instantiate(WheatSeed.prefab, transform);
             Temp.SetActive(false);
             WheatSeed.Objects.Add(Temp);
+
+        }
+        for (int i = 0; i < HitEffect.Count; i++)
+        {
+            Temp = Instantiate(HitEffect.prefab, transform);
+            Temp.SetActive(false);
+            HitEffect.Objects.Add(Temp);
 
         }
     }
@@ -98,6 +107,9 @@ public class Pooling : MonoBehaviour
             case "WheatSeed":
                 UsedPrefab = WheatSeed;
                 break;
+            case "HitEffect":
+                UsedPrefab = HitEffect;
+                break;
         }
         for (int i = 0; i < UsedPrefab.Count; i++)
         {
@@ -113,11 +125,10 @@ public class Pooling : MonoBehaviour
     }
     public void BackObjectToRepository(GameObject Obj)
     {
-        Obj.SetActive(false);
         Obj.transform.SetParent(transform);
         Obj.transform.localPosition = Vector3.zero;
         Obj.transform.rotation = Quaternion.identity;
-        
+        Obj.SetActive(false);
     }
     
     

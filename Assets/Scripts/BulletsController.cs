@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class BulletsController : MonoBehaviour
 {
-    private PlayerController _playerController;
     [SerializeField] private float BulletShootingPowerF;
     [SerializeField] private bool IsCartridge=false;
-
+    
     public Vector2 InitalPosV3;
     private bool IsActive = false;
     private Rigidbody2D Rb;
     // Start is called before the first frame update
+
     void OnEnable()
     {
         IsActive = true;
@@ -51,6 +51,11 @@ public class BulletsController : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        CheckForHit();
+    }
+
     private void OnDisable()
     {
         if (IsCartridge)
@@ -67,6 +72,54 @@ public class BulletsController : MonoBehaviour
         {
             yield return null;
         }
+        Pooling.instance.BackObjectToRepository(gameObject);
+    }
+
+    public void CheckForHit()
+    {
+        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, .1f);
+        foreach (var VARIABLE in cols)
+        {
+            if (VARIABLE.gameObject.tag == "Hitable"|| VARIABLE.gameObject.tag =="Enemy")
+            {
+                GameObject gm = Pooling.instance.ReturnObject("HitEffect");
+                gm.transform.position = transform.position;
+                gm.SetActive(true);
+                StartCoroutine(BackBulletHitEffectToReposetory(gm));
+                
+                if (VARIABLE.gameObject.tag == "Enemy")
+                {
+                    VARIABLE.gameObject.GetComponent<EnemyAi>().Damage();
+                }
+                Pooling.instance.BackObjectToRepository(gameObject);
+            }
+        }
+    }
+    /*private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if (!IsCartridge)
+        {
+            if (collision.gameObject.tag != "Player" && collision.gameObject.tag !="Bullet")
+            {
+                GameObject gm = Pooling.instance.ReturnObject("HitEffect");
+                gm.transform.position = transform.position;
+                gm.SetActive(true);
+                StartCoroutine(BackBulletHitEffectToReposetory(gm));
+                
+                if (collision.gameObject.tag == "Enemy")
+                {
+                    collision.gameObject.GetComponent<EnemyAi>().Damage();
+                }
+                Pooling.instance.BackObjectToRepository(gameObject);
+            }
+        }
+
+    }*/
+
+    IEnumerator BackBulletHitEffectToReposetory(GameObject gameObject)
+    {
+        yield return new WaitForSeconds(2);
         Pooling.instance.BackObjectToRepository(gameObject);
     }
 }
