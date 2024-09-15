@@ -12,16 +12,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ParticleSystem DeadEffect;
     public MainManager.Tools PlayerInHand = MainManager.Tools.WheatSeed;
     private MainManager _MainManager;
-    
+
     private float CurrentSpeedF;
     [SerializeField] private float WalkingSpeedF;
     [SerializeField] private float RunningSpeedF;
-    
-    
+
+
     [SerializeField] private GameObject CornSeedPrefabG;
     [SerializeField] private GameObject WheatSeedPrefabG;
 
     [SerializeField] private GameObject Seeds;
+
     [SerializeField] private GameObject HarvestingEffectPrefabG;
     //[SerializeField] private float JumpForceF;
 
@@ -41,11 +42,15 @@ public class PlayerController : MonoBehaviour
         _MainManager = GameObject.Find("MainManager").GetComponent<MainManager>();
         PlayerRB = GetComponent<Rigidbody2D>();
         _Animator = GetComponent<Animator>();
-        
+
     }
+
     private void FixedUpdate()
     {
-        BasicMovment();
+        if (_MainManager.isGameStarted)
+        {
+            BasicMovment();
+        }
     }
 
     // Update is called once per frame
@@ -62,61 +67,76 @@ public class PlayerController : MonoBehaviour
                 _Animator.SetBool("Walk", false);
             }
 
-        if ((PlayerInHand == MainManager.Tools.WheatSeed || PlayerInHand== MainManager.Tools.CornSeed) && Input.GetKey(KeyCode.Space))
-        {
-            PlantSeeds();
-        }
+            if ((PlayerInHand == MainManager.Tools.WheatSeed || PlayerInHand == MainManager.Tools.CornSeed) &&
+                Input.GetKey(KeyCode.Space))
+            {
+                PlantSeeds();
+            }
 
-        if (PlayerInHand == MainManager.Tools.sickle&& Input.GetKey(KeyCode.Space))
-        {
-            HarvestPlants();
-        }
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            _MainManager.Buy("Rifle");
-            _Animator.SetTrigger("Rifle");
-            SoundManager.instance.PlayerSFX.Stop();
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            _MainManager.Buy("Pistol");
-            _Animator.SetTrigger("Pistol");
-        }
-        if (Input.GetKey(KeyCode.Alpha1))
-        {
-            _MainManager.SwichTool(MainManager.Tools.Pistol);
-            _Animator.SetTrigger("Pistol");
-            SoundManager.instance.PlayerSFX.Stop();
-        }
-        if (Input.GetKey(KeyCode.M))
-        {
-            _MainManager.Buy("ShotGun");
-            _Animator.SetTrigger("Shotgun");
-            SoundManager.instance.PlayerSFX.Stop();
-        }
-        
-        if (Input.GetKey(KeyCode.Alpha4))
-        {
-            _MainManager.SwichTool(MainManager.Tools.sickle);
-            _Animator.SetTrigger("Sickle");
-            SoundManager.instance.PlayerSFX.Stop();
-        }
-        if (Input.GetKey(KeyCode.Alpha6))
-        {
-            _MainManager.SwichTool(MainManager.Tools.WheatSeed);
-            _Animator.SetTrigger("Wheat");
-            SoundManager.instance.PlayerSFX.Stop();
-        }
-        if (Input.GetKey(KeyCode.Alpha5))
-        {
-            _MainManager.SwichTool(MainManager.Tools.CornSeed);
-            _Animator.SetTrigger("Corn");
-            SoundManager.instance.PlayerSFX.Stop();
-        }
+            if (PlayerInHand == MainManager.Tools.sickle && Input.GetKey(KeyCode.Space))
+            {
+                HarvestPlants();
+            }
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            _MainManager.Sell("Wheats");
+            
+            //gunning
+            
+            
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                _MainManager.SwichTool(MainManager.Tools.Pistol);
+                _Animator.SetTrigger("Pistol");
+                SoundManager.instance.PlayerSFX.Stop();
+            }
+            
+            
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                if (Inventory.isRifleBought)
+                {
+                    _MainManager.SwichTool(MainManager.Tools.Rifle);
+                    _Animator.SetTrigger("Rifle");
+                    SoundManager.instance.PlayerSFX.Stop();
+                }
+            }
+
+            if (Input.GetKey(KeyCode.B))
+            {
+                if (Inventory.isShotgunBought)
+                {
+                    _MainManager.SwichTool(MainManager.Tools.Shotgun);
+                    _Animator.SetTrigger("Shotgun");
+                    SoundManager.instance.PlayerSFX.Stop();
+                }
+            }
+
+            
+            //farming
+            if (Input.GetKey(KeyCode.P))
+            {
+                _MainManager.SwichTool(MainManager.Tools.sickle);
+                _Animator.SetTrigger("Sickle");
+                SoundManager.instance.PlayerSFX.Stop();
+            }
+
+            if (Input.GetKey(KeyCode.O))
+            {
+                _MainManager.SwichTool(MainManager.Tools.WheatSeed);
+                _Animator.SetTrigger("Wheat");
+                SoundManager.instance.PlayerSFX.Stop();
+            }
+
+            if (Input.GetKey(KeyCode.I))
+            {
+                _MainManager.SwichTool(MainManager.Tools.CornSeed);
+                _Animator.SetTrigger("Corn");
+                SoundManager.instance.PlayerSFX.Stop();
+            }
+
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                _MainManager.Sell("Wheats");
+            }
         }
     }
 
@@ -172,8 +192,8 @@ public class PlayerController : MonoBehaviour
 
 
         PlayerRB.AddForce(MoveDir * CurrentSpeedF * Time.fixedDeltaTime * 50);
-        
-        
+
+
         transform.localScale = transformLocalScaleV3;
 
     }
@@ -191,11 +211,12 @@ public class PlayerController : MonoBehaviour
                 switch (PlayerInHand)
                 {
                     case MainManager.Tools.WheatSeed:
-                        GameObject Temp1 =  Pooling.instance.ReturnObject("WheatSeed");
+                        GameObject Temp1 = Pooling.instance.ReturnObject("WheatSeed");
                         Temp1.transform.position = VARIABLE.transform.position;
                         Temp1.transform.SetParent(Seeds.transform);
                         Temp1.SetActive(true);
                         FC.SeedType = "Wheat";
+                        FC.daysToGrow = 1;
                         break;
                     case MainManager.Tools.CornSeed:
                         GameObject Temp2 = Pooling.instance.ReturnObject("CornSeed");
@@ -203,6 +224,7 @@ public class PlayerController : MonoBehaviour
                         Temp2.transform.SetParent(Seeds.transform);
                         Temp2.SetActive(true);
                         FC.SeedType = "Corn";
+                        FC.daysToGrow = 2;
                         break;
                 }
 
@@ -214,12 +236,12 @@ public class PlayerController : MonoBehaviour
     void HarvestPlants()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1);
-            
+
         foreach (var VARIABLE in colliders)
         {
 
             FarmingController FC = VARIABLE.gameObject.GetComponent<FarmingController>();
-            if (VARIABLE.gameObject.tag == "SeedsSpawner"&& FC.isGrown && FC.isPlant)
+            if (VARIABLE.gameObject.tag == "SeedsSpawner" && FC.isGrown && FC.isPlant)
             {
                 FC.isGrown = false;
                 FC.isPlant = false;
@@ -228,7 +250,8 @@ public class PlayerController : MonoBehaviour
             if (VARIABLE.gameObject.tag == "Wheat")
             {
                 SoundManager.instance.PlaySound("Plant");
-                GameObject prefab=Instantiate(HarvestingEffectPrefabG, VARIABLE.transform.position, quaternion.identity);
+                GameObject prefab = Instantiate(HarvestingEffectPrefabG, VARIABLE.transform.position,
+                    quaternion.identity);
                 StartCoroutine(DestroyHarvestingParticleSystem(prefab));
                 Pooling.instance.BackObjectToRepository(VARIABLE.gameObject);
                 Inventory.Wheats++;
@@ -237,7 +260,8 @@ public class PlayerController : MonoBehaviour
             if (VARIABLE.gameObject.tag == "Corn")
             {
                 SoundManager.instance.PlaySound("Plant");
-                GameObject prefab=Instantiate(HarvestingEffectPrefabG, VARIABLE.transform.position, quaternion.identity);
+                GameObject prefab = Instantiate(HarvestingEffectPrefabG, VARIABLE.transform.position,
+                    quaternion.identity);
                 StartCoroutine(DestroyHarvestingParticleSystem(prefab));
                 Pooling.instance.BackObjectToRepository(VARIABLE.gameObject);
                 Inventory.Corns++;
@@ -265,68 +289,94 @@ public class PlayerController : MonoBehaviour
             gameObject.SetActive(false);
             _MainManager.gameObject.SetActive(false);
         }
+
         float mirror = -transform.localScale.x;
         PlayerRB.AddForce(((transform.right * mirror)) * 10, ForceMode2D.Impulse);
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(.1f);
         spriteRenderer.color = Color.white;
     }
-    private void OnTriggerStay2D(Collider2D collision)
+
+    void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.name == "SellStore")
+        if (!_MainManager.IsNightB)
         {
-            SellStoreHelp.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.K))
+            if (collision.name == "SellStore")
             {
-                _MainManager.Sell();
+                SellStoreHelp.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.H))
+                {
+                    _MainManager.Sell("Wheats");
+                }
+
+                if (Input.GetKeyDown(KeyCode.J))
+                {
+                    _MainManager.Sell("Corns");
+                }
+
             }
 
+            if (collision.name == "GunStore")
+            {
+                GunStoreHelp.SetActive(true);
+
+
+                if (Input.GetKeyDown(KeyCode.H))
+                {
+                    _MainManager.Buy("Rifle");
+                    _Animator.SetTrigger("Rifle");
+                    SoundManager.instance.PlayerSFX.Stop();
+                }
+
+                if (Input.GetKey(KeyCode.J))
+                {
+                    _MainManager.Buy("ShotGun");
+                    _Animator.SetTrigger("Shotgun");
+                    SoundManager.instance.PlayerSFX.Stop();
+                }
+
+                if (Input.GetKey(KeyCode.L))
+                {
+                    _MainManager.Buy("Ammo");
+                    SoundManager.instance.PlayerSFX.Stop();
+                }
+            }
         }
-        if (collision.name == "GunStore")
+        else
         {
-            GunStoreHelp.SetActive(true);
-
-
-            if (Input.GetKeyDown(KeyCode.N))
-            {
-                _MainManager.Buy("Rifle");
-                _Animator.SetTrigger("Rifle");
-                SoundManager.instance.PlayerSFX.Stop();
-            }
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                _MainManager.Buy("Pistol");
-                _Animator.SetTrigger("Pistol");
-            }
-            if (Input.GetKey(KeyCode.M))
-            {
-                _MainManager.Buy("ShotGun");
-                _Animator.SetTrigger("Shotgun");
-                SoundManager.instance.PlayerSFX.Stop();
-            }
-
-
+            GunStoreHelp.SetActive(false);
+            SellStoreHelp.SetActive(false);
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
+
+
+
+    void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.name == "GunStore")
         {
             GunStoreHelp.SetActive(false);
         }
+
         if (collision.name == "SellStore")
         {
             SellStoreHelp.SetActive(false);
         }
     }
+
+
 }
+
+
+
 public class Inventory
-{
-    public static int RifleBulletsI;
-    public static int ShotgunBulletsI;
-    public static int Wheats;
-    public static int Corns;
-    public static int Coins;
-    public static bool isRifleBought;
-    public static bool isShotgunBought;
-}
+    {
+        public static int RifleBulletsI;
+        public static int ShotgunBulletsI;
+        public static int Wheats;
+        public static int Corns;
+        public static int Coins;
+        public static bool isRifleBought;
+        public static bool isShotgunBought;
+    }
+

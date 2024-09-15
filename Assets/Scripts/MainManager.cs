@@ -10,7 +10,7 @@ public class MainManager : MonoBehaviour
 {
     public PlayerController _PlayerController;
     public int PlayerMoney;
-    
+
     public enum Tools
     {
         Pistol,
@@ -34,8 +34,8 @@ public class MainManager : MonoBehaviour
     [SerializeField] private ParticleSystem RainEffect;
     [SerializeField] private Animator GlobalLight;
     [SerializeField] private GameObject SpotLight;
-    [SerializeField] private int NightTimeI;
     [SerializeField] private int DayTimeI;
+    [SerializeField] private int NightTimeI;
 
 
 
@@ -43,12 +43,12 @@ public class MainManager : MonoBehaviour
 
     [SerializeField] private Text[] Texts; 
     // Start is called before the first frame update
-    void Start()
+    public void StartGame()
     {
         Inventory.RifleBulletsI = 100;
         Inventory.ShotgunBulletsI = 10;
-        Inventory.isRifleBought=true;
-        Inventory.isShotgunBought = true;
+        Inventory.isRifleBought=false;
+        Inventory.isShotgunBought = false;
 
         _PlayerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         //InstantiateTool(_PlayerController.PlayerInHand);
@@ -107,19 +107,35 @@ public class MainManager : MonoBehaviour
         switch (obj)
         {
             case "Rifle":
-                SwichTool(Tools.Rifle);
+                if (!Inventory.isRifleBought)
+                {
+                    if (Inventory.Coins >= 50)
+                    {
+                        SwichTool(Tools.Rifle);
+                        Inventory.Coins -= 50;
+                    }
+                }
+
                 break;
             case "ShotGun":
-                SwichTool(Tools.Shotgun);
+                if (Inventory.isShotgunBought)
+                {
+                    if (Inventory.Coins >= 80)
+                    {
+                        SwichTool(Tools.Shotgun);
+                        Inventory.Coins -= 80;
+                    }
+                }
+
                 break;
-            case "CornSeed":
-                SwichTool(Tools.CornSeed);
-                break;
-            case "RifleBullet":
-                Inventory.RifleBulletsI += 100;
-                break;
-            case "ShotgunBullet":
-                Inventory.ShotgunBulletsI += 10;
+            case "Ammo":
+                if (Inventory.Coins >= 20)
+                {
+                    Inventory.RifleBulletsI += 100;
+                    Inventory.ShotgunBulletsI += 10;
+                    Inventory.Coins -= 20;
+                }
+
                 break;
             
         }
@@ -146,20 +162,22 @@ public class MainManager : MonoBehaviour
         int time;
         if (IsNightB)
         {
-            time = DayTimeI;
+            time = NightTimeI;
         }
         else
         {
-            time = NightTimeI;
+            time = DayTimeI;
         }
         yield return new WaitForSeconds(time);
         if (!IsNightB)
         {
+            StartCoroutine(SpawnEnemies((CurrentDay+1)*2));
+            Texts[5].gameObject.SetActive(true);
+            Texts[5].text = "Night " + (CurrentDay+1);
             SpotLight.SetActive(true);
             GlobalLight.SetTrigger("GoNight");
             SoundManager.instance.ThunderAndLightningSound();
             RainEffect.Play();
-            StartCoroutine(SpawnEnemies(CurrentDay*2));
         }
         else
         {
@@ -168,6 +186,7 @@ public class MainManager : MonoBehaviour
             CurrentDay++;
             yield return new WaitForSeconds(1);
             SpotLight.SetActive(false);
+            Texts[5].gameObject.SetActive(false);
         }
 
         IsNightB = !IsNightB;
@@ -178,16 +197,27 @@ public class MainManager : MonoBehaviour
     {
         for (int j = 0; j < NumberOfEnemies; j++)
         {
-            for (int i = 0; i < EnemySpawnRate; i++)
-            {
-                yield return null;
-            }
-
+            yield return new WaitForSeconds(EnemySpawnRate);
             Vector3 spawn = EnemySpawns[Random.Range(0, EnemySpawns.Length)].transform.position;
-            Instantiate(Enemies[Random.Range(0,Enemies.Length)], new Vector3(spawn.x, spawn.y + Random.Range(-5, 5)), quaternion.identity);
-
+            Instantiate(Enemies[Random.Range(0, Enemies.Length)],
+                new Vector3(spawn.x, spawn.y + Random.Range(-5, 5)), quaternion.identity);
+            print("enemty");
+            
+        
         }
+    
+    }
 
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
+    public void Restart()
+    {
+        System.Diagnostics.Process.Start(Application.dataPath.Replace("_Data", ".exe")); //new program
+        Application.Quit(); //kill current process
     }
 }
 

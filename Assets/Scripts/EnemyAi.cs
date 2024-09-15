@@ -8,11 +8,12 @@ public class EnemyAi : MonoBehaviour
 {
     NavMeshAgent AI;
     public Transform Player;
-    public int Health=10;
+    public int Health = 10;
     [SerializeField] private ParticleSystem DeadEffect;
     private PlayerController _PlayerController;
 
-    [SerializeField] private float hitForce=1;
+    [SerializeField] private float hitForce = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,7 @@ public class EnemyAi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         AI.SetDestination(Player.position);
         if (AI.velocity.x > 0)
         {
@@ -34,11 +35,11 @@ public class EnemyAi : MonoBehaviour
         }
         else if (AI.velocity.x < 0)
         {
-            
+
             AI.transform.localScale = new Vector3(-1, 1, 1);
         }
     }
-    
+
 
     private void OnCollisionEnter2D(Collision2D col)
     {
@@ -50,7 +51,7 @@ public class EnemyAi : MonoBehaviour
             rb.AddForce(-dir * 8, ForceMode2D.Impulse);
             rb.AddForce(-dir * 8, ForceMode2D.Impulse);
         }
-        
+
 
     }
 
@@ -60,12 +61,13 @@ public class EnemyAi : MonoBehaviour
         Health--;
         if (Health == 0)
         {
-            Instantiate(DeadEffect,transform.position, Quaternion.identity);
+            Instantiate(DeadEffect, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
             return;
         }
+
         Vector3 dir = (AI.destination - transform.position).normalized;
-        rb.AddForce(-dir*hitForce,ForceMode2D.Impulse);
-        
+        rb.AddForce(-dir * hitForce, ForceMode2D.Impulse);
+
     }
 }

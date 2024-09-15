@@ -17,9 +17,15 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/BuilderPatternFunctionsRewriter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/UnityProjects/TheCalmBeforeTheStorm/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/UnityProjects/TheCalmBeforeTheStorm/Assets/Scenes/SampleScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GunController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/UnityProjects/TheCalmBeforeTheStorm/Assets/Scripts/MainManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/UnityProjects/TheCalmBeforeTheStorm/Assets/Scripts/MainManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/UnityProjects/TheCalmBeforeTheStorm/Assets/Scripts/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/UnityProjects/TheCalmBeforeTheStorm/Assets/Scripts/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Pooling.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SeedSpawns.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -52,6 +58,14 @@
   }
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Builds/Windows\TheCalmBeforeTheStorm.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\UnityProjects\TheCalmBeforeTheStorm\Builds\Windows" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="D:\Unity\unity\2022.3.42f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\UnityProjects\TheCalmBeforeTheStorm -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
@@ -99,7 +113,7 @@
       <workItem from="1726126079042" duration="13916000" />
       <workItem from="1726183129642" duration="19618000" />
       <workItem from="1726301784575" duration="20203000" />
-      <workItem from="1726380658544" duration="2589000" />
+      <workItem from="1726380658544" duration="10730000" />
     </task>
     <task id="LOCAL-00001" summary="Inital commit">
       <created>1725868343797</created>
@@ -297,7 +311,14 @@
       <option name="project" value="LOCAL" />
       <updated>1726326573434</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Setup ui">
+      <created>1726385438794</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1726385438794</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -353,7 +374,6 @@
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Second commit" />
     <MESSAGE value="Third commit" />
     <MESSAGE value="added gitignore file" />
     <MESSAGE value="initalized the gitignore file" />
@@ -378,6 +398,7 @@
     <MESSAGE value="completed farming system and added daynight cycle" />
     <MESSAGE value="added damage system and bullets limit system and bullet hit particles and some other changes" />
     <MESSAGE value="fixed inventory system and added enemy spawn system" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed inventory system and added enemy spawn system" />
+    <MESSAGE value="Setup ui" />
+    <option name="LAST_COMMIT_MESSAGE" value="Setup ui" />
   </component>
 </project>

@@ -15,22 +15,25 @@ public class FarmingController : MonoBehaviour
     public bool inFront;
     
     public int DayPlant;
+    public int daysToGrow;
 
     private void Update()
     {
         if (isPlant)
         {
-            if (MainManager.CurrentDay - DayPlant > 2)
+            if (!isGrown)
             {
-                if (!isGrown)
+                if (MainManager.CurrentDay - DayPlant >= daysToGrow)
                 {
+
                     Grow();
                 }
+
             }
         }
     }
 
-     void Grow()
+    void Grow()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, .5f);
         foreach (var VARIABLE in colliders)
