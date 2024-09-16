@@ -28,9 +28,9 @@ public class MainManager : MonoBehaviour
     public bool isGameStarted;
     [SerializeField] private GameObject Enemy;
     [SerializeField] private GameObject[] Enemies;
-    
+
     [SerializeField] private GameObject[] EnemySpawns;
-    
+
     [SerializeField] private ParticleSystem RainEffect;
     [SerializeField] private Animator GlobalLight;
     [SerializeField] private GameObject SpotLight;
@@ -41,24 +41,24 @@ public class MainManager : MonoBehaviour
 
     [SerializeField] private GameObject[] UiElements;
 
-    [SerializeField] private Text[] Texts; 
+    [SerializeField] private Text[] Texts;
     // Start is called before the first frame update
     public void StartGame()
     {
-        Inventory.RifleBulletsI = 100;
-        Inventory.ShotgunBulletsI = 10;
-        Inventory.isRifleBought=false;
-        Inventory.isShotgunBought = false;
+        Cursor.visible = false;
+        Inventory.RifleBulletsI = 0;
+        Inventory.ShotgunBulletsI = 0;
+
 
         _PlayerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         //InstantiateTool(_PlayerController.PlayerInHand);
-        Application.targetFrameRate = 120;
+        Application.targetFrameRate = 60;
         StartCoroutine(NightDayCycle());
-        
+
         UiElements[0].SetActive(false);
         UiElements[1].SetActive(true);
         isGameStarted = true;
-        
+
     }
 
     private void Update()
@@ -106,55 +106,42 @@ public class MainManager : MonoBehaviour
     {
         switch (obj)
         {
-            case "Rifle":
-                if (!Inventory.isRifleBought)
+            case "RifleAmmo":
+                SwichTool(Tools.Rifle);
+                if (Inventory.Coins >= 80)
                 {
-                    if (Inventory.Coins >= 50)
-                    {
-                        SwichTool(Tools.Rifle);
-                        Inventory.Coins -= 50;
-                    }
+                    
+                    Inventory.RifleBulletsI += 40;
+                    Inventory.Coins -= 80;
                 }
 
-                break;
-            case "ShotGun":
-                if (Inventory.isShotgunBought)
-                {
-                    if (Inventory.Coins >= 80)
-                    {
-                        SwichTool(Tools.Shotgun);
-                        Inventory.Coins -= 80;
-                    }
-                }
 
                 break;
-            case "Ammo":
-                if (Inventory.Coins >= 20)
+            case "ShotGunAmmo":
+
+                SwichTool(Tools.Shotgun);
+                if (Inventory.Coins >= 100)
                 {
-                    Inventory.RifleBulletsI += 100;
-                    Inventory.ShotgunBulletsI += 10;
-                    Inventory.Coins -= 20;
+                    
+                    Inventory.ShotgunBulletsI += 30;
+                    Inventory.Coins -= 100;
                 }
 
+
                 break;
-            
+
+
         }
     }
 
-    public void Sell(string obj)
+    public void Sell()
     {
-        switch (obj)
-        {
-            case "Wheats" :
-                Inventory.Coins += Inventory.Wheats;
-                Inventory.Wheats = 0;
-                break;
-            case "Corns" :
-                Inventory.Coins += Inventory.Corns*2;
-                Inventory.Corns = 0;
-                break;
 
-        }
+        Inventory.Coins += Inventory.Wheats;
+        Inventory.Coins += Inventory.Corns * 2;
+        Inventory.Wheats = 0;
+        Inventory.Corns = 0;
+
     }
 
     IEnumerator NightDayCycle()
@@ -171,9 +158,9 @@ public class MainManager : MonoBehaviour
         yield return new WaitForSeconds(time);
         if (!IsNightB)
         {
-            StartCoroutine(SpawnEnemies((CurrentDay+1)*2));
+            StartCoroutine(SpawnEnemies((CurrentDay + 1) * 2));
             Texts[5].gameObject.SetActive(true);
-            Texts[5].text = "Night " + (CurrentDay+1);
+            Texts[5].text = "Night " + (CurrentDay + 1);
             SpotLight.SetActive(true);
             GlobalLight.SetTrigger("GoNight");
             SoundManager.instance.ThunderAndLightningSound();
@@ -202,10 +189,10 @@ public class MainManager : MonoBehaviour
             Instantiate(Enemies[Random.Range(0, Enemies.Length)],
                 new Vector3(spawn.x, spawn.y + Random.Range(-5, 5)), quaternion.identity);
             print("enemty");
-            
-        
+
+
         }
-    
+
     }
 
 
@@ -216,8 +203,7 @@ public class MainManager : MonoBehaviour
 
     public void Restart()
     {
-        System.Diagnostics.Process.Start(Application.dataPath.Replace("_Data", ".exe")); //new program
-        Application.Quit(); //kill current process
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0); //kill current process
     }
 }
 
