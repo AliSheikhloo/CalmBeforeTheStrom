@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         _MainManager = GameObject.Find("MainManager").GetComponent<MainManager>();
         PlayerRB = GetComponent<Rigidbody2D>();
         _Animator = GetComponent<Animator>();
@@ -68,12 +70,12 @@ public class PlayerController : MonoBehaviour
             }
 
             if ((PlayerInHand == MainManager.Tools.WheatSeed || PlayerInHand == MainManager.Tools.CornSeed) &&
-                Input.GetKey(KeyCode.Space))
+                Input.GetMouseButton(0))
             {
                 PlantSeeds();
             }
 
-            if (PlayerInHand == MainManager.Tools.sickle && Input.GetKey(KeyCode.Space))
+            if (PlayerInHand == MainManager.Tools.sickle && Input.GetMouseButton(0))
             {
                 HarvestPlants();
             }
@@ -82,7 +84,7 @@ public class PlayerController : MonoBehaviour
             //gunning
             
             
-            if (Input.GetKeyDown(KeyCode.M))
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 _MainManager.SwichTool(MainManager.Tools.Pistol);
                 _Animator.SetTrigger("Pistol");
@@ -90,53 +92,48 @@ public class PlayerController : MonoBehaviour
             }
             
             
-            if (Input.GetKeyDown(KeyCode.N))
+            if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                if (Inventory.isRifleBought)
-                {
-                    _MainManager.SwichTool(MainManager.Tools.Rifle);
-                    _Animator.SetTrigger("Rifle");
-                    SoundManager.instance.PlayerSFX.Stop();
-                }
+                
+                 _MainManager.SwichTool(MainManager.Tools.Rifle);
+                 _Animator.SetTrigger("Rifle");
+                  SoundManager.instance.PlayerSFX.Stop();
+                
             }
 
-            if (Input.GetKey(KeyCode.B))
+            if (Input.GetKey(KeyCode.Alpha3))
             {
-                if (Inventory.isShotgunBought)
-                {
-                    _MainManager.SwichTool(MainManager.Tools.Shotgun);
-                    _Animator.SetTrigger("Shotgun");
-                    SoundManager.instance.PlayerSFX.Stop();
-                }
+                
+                _MainManager.SwichTool(MainManager.Tools.Shotgun);
+                _Animator.SetTrigger("Shotgun");
+                 SoundManager.instance.PlayerSFX.Stop();
+                
             }
 
             
             //farming
-            if (Input.GetKey(KeyCode.P))
+            if (Input.GetKey(KeyCode.Alpha4))
             {
                 _MainManager.SwichTool(MainManager.Tools.sickle);
                 _Animator.SetTrigger("Sickle");
                 SoundManager.instance.PlayerSFX.Stop();
             }
 
-            if (Input.GetKey(KeyCode.O))
+            if (Input.GetKey(KeyCode.Alpha5))
             {
                 _MainManager.SwichTool(MainManager.Tools.WheatSeed);
                 _Animator.SetTrigger("Wheat");
                 SoundManager.instance.PlayerSFX.Stop();
             }
 
-            if (Input.GetKey(KeyCode.I))
+            if (Input.GetKey(KeyCode.Alpha6))
             {
                 _MainManager.SwichTool(MainManager.Tools.CornSeed);
                 _Animator.SetTrigger("Corn");
                 SoundManager.instance.PlayerSFX.Stop();
             }
 
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                _MainManager.Sell("Wheats");
-            }
+            
         }
     }
 
@@ -304,14 +301,9 @@ public class PlayerController : MonoBehaviour
             if (collision.name == "SellStore")
             {
                 SellStoreHelp.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.H))
+                if (Input.GetKeyDown(KeyCode.K))
                 {
-                    _MainManager.Sell("Wheats");
-                }
-
-                if (Input.GetKeyDown(KeyCode.J))
-                {
-                    _MainManager.Sell("Corns");
+                    _MainManager.Sell();
                 }
 
             }
@@ -321,25 +313,21 @@ public class PlayerController : MonoBehaviour
                 GunStoreHelp.SetActive(true);
 
 
-                if (Input.GetKeyDown(KeyCode.H))
+                if (Input.GetKeyDown(KeyCode.R))
                 {
-                    _MainManager.Buy("Rifle");
+                    _MainManager.Buy("RifleAmmo");
                     _Animator.SetTrigger("Rifle");
                     SoundManager.instance.PlayerSFX.Stop();
                 }
 
-                if (Input.GetKey(KeyCode.J))
+                if (Input.GetKey(KeyCode.H))
                 {
-                    _MainManager.Buy("ShotGun");
+                    _MainManager.Buy("ShotGunAmmo");
                     _Animator.SetTrigger("Shotgun");
                     SoundManager.instance.PlayerSFX.Stop();
                 }
 
-                if (Input.GetKey(KeyCode.L))
-                {
-                    _MainManager.Buy("Ammo");
-                    SoundManager.instance.PlayerSFX.Stop();
-                }
+                
             }
         }
         else
@@ -376,7 +364,6 @@ public class Inventory
         public static int Wheats;
         public static int Corns;
         public static int Coins;
-        public static bool isRifleBought;
-        public static bool isShotgunBought;
+        
     }
 

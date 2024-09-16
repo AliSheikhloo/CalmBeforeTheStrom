@@ -34,7 +34,7 @@ public class GunController : MonoBehaviour
     {
 //        if (_PlayerController.IsShiftPressedB) return;
 
-        if (Input.GetKeyDown(KeyCode.Space) && IsGunLoaded && !_PlayerController.GameOverB)
+        if (Input.GetMouseButtonDown(0) && IsGunLoaded && !_PlayerController.GameOverB)
         {
 
             switch (ThisGunType)
@@ -81,7 +81,7 @@ public class GunController : MonoBehaviour
     IEnumerator FireRifle()
     {
         SoundManager.instance.PlaySound("Rifle");
-        while (Input.GetKey(KeyCode.Space))
+        while (Input.GetMouseButton(0))
         {
             if (Inventory.RifleBulletsI == 0)
             {
