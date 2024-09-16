@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
     public AudioSource PlayerSFX;
     public AudioSource WalkSFX;
+    public AudioSource ThunderAndLightning;
     [SerializeField] private Rigidbody2D Player;
     // Start is called before the first frame update
     void Start()
@@ -66,5 +67,9 @@ public class SoundManager : MonoBehaviour
         {
             WalkSFX.Stop();
         }
+    }
+    public void ThunderAndLightningSound()
+    {
+        ThunderAndLightning.Play();
     }
 }

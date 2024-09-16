@@ -28,12 +28,11 @@ public class MainManager : MonoBehaviour
     [SerializeField] private GameObject[] EnemySpawns;
     
     [SerializeField] private ParticleSystem RainEffect;
-    [SerializeField] private Light2D GlobalLight;
+    [SerializeField] private Animator GlobalLight;
     [SerializeField] private GameObject SpotLight;
     [SerializeField] private int NightTimeI;
     [SerializeField] private int DayTimeI;
-    [Range(0, 100)]
-    [SerializeField] private int LightIntensity;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -135,23 +134,17 @@ public class MainManager : MonoBehaviour
         if (!IsNightB)
         {
             SpotLight.SetActive(true);
-            for (int i = 0; i < 100 - LightIntensity; i++)
-            {
-                GlobalLight.intensity -= .01f;
-                yield return null;
-            }
+            GlobalLight.SetTrigger("GoNight");
+            SoundManager.instance.ThunderAndLightningSound();
             RainEffect.Play();
             StartCoroutine(SpawnEnemies(CurrentDay*2));
         }
         else
         {
             RainEffect.Stop();
-            for (int i = 0; i < 100 - LightIntensity; i++)
-            {
-                GlobalLight.intensity += .01f;
-                yield return null;
-            }
+            GlobalLight.SetTrigger("GoDay");
             CurrentDay++;
+            yield return new WaitForSeconds(1);
             SpotLight.SetActive(false);
         }
 

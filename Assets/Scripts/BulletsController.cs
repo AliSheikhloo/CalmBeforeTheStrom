@@ -41,6 +41,11 @@ public class BulletsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!IsCartridge) 
+        {
+            CheckForHit();
+        }
+        
         if (transform.position.y < InitalPosV3.y - .5f)
         {
             if (IsCartridge&& IsActive)
@@ -53,7 +58,7 @@ public class BulletsController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CheckForHit();
+        
     }
 
     private void OnDisable()
@@ -82,6 +87,7 @@ public class BulletsController : MonoBehaviour
         {
             if (VARIABLE.gameObject.tag == "Hitable"|| VARIABLE.gameObject.tag =="Enemy")
             {
+
                 GameObject gm = Pooling.instance.ReturnObject("HitEffect");
                 gm.transform.position = transform.position;
                 gm.SetActive(true);
@@ -90,8 +96,11 @@ public class BulletsController : MonoBehaviour
                 if (VARIABLE.gameObject.tag == "Enemy")
                 {
                     VARIABLE.gameObject.GetComponent<EnemyAi>().Damage();
+                    
                 }
+                
                 Pooling.instance.BackObjectToRepository(gameObject);
+                break;
             }
         }
     }
