@@ -24,7 +24,8 @@ public class MainManager : MonoBehaviour
     public bool IsNightB;
     public static int CurrentDay;
     public int EnemySpawnRate;
-    [SerializeField] private GameObject Enemy;
+    [SerializeField] private GameObject[] Enemies;
+    
     [SerializeField] private GameObject[] EnemySpawns;
     
     [SerializeField] private ParticleSystem RainEffect;
@@ -103,20 +104,12 @@ public class MainManager : MonoBehaviour
         }
     }
 
-    public void Sell(string obj)
+    public void Sell()
     {
-        switch (obj)
-        {
-            case "Wheats" :
-                Inventory.Coins += Inventory.Wheats;
-                Inventory.Wheats = 0;
-                break;
-            case "Corns" :
-                Inventory.Coins += Inventory.Corns*2;
-                Inventory.Corns = 0;
-                break;
-
-        }
+          Inventory.Coins += Inventory.Wheats;
+          Inventory.Wheats = 0;
+          Inventory.Coins += Inventory.Corns*2;
+          Inventory.Corns = 0;
     }
 
     IEnumerator NightDayCycle()
@@ -162,7 +155,7 @@ public class MainManager : MonoBehaviour
             }
 
             Vector3 spawn = EnemySpawns[Random.Range(0, EnemySpawns.Length)].transform.position;
-            Instantiate(Enemy, new Vector3(spawn.x, spawn.y + Random.Range(-5, 5)), quaternion.identity);
+            Instantiate(Enemies[Random.Range(0,Enemies.Length)], new Vector3(spawn.x, spawn.y + Random.Range(-5, 5)), quaternion.identity);
 
         }
 

@@ -9,7 +9,7 @@ public class EnemyAi : MonoBehaviour
     NavMeshAgent AI;
     public Transform Player;
     public int Health=10;
-
+    [SerializeField] private ParticleSystem DeadEffect;
     private PlayerController _PlayerController;
 
     [SerializeField] private float hitForce=1;
@@ -34,7 +34,7 @@ public class EnemyAi : MonoBehaviour
         }
         else if (AI.velocity.x < 0)
         {
-            print("SDDS");
+            
             AI.transform.localScale = new Vector3(-1, 1, 1);
         }
     }
@@ -45,13 +45,25 @@ public class EnemyAi : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             StartCoroutine(_PlayerController.Damage());
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            Vector3 dir = (AI.destination - transform.position).normalized;
+            rb.AddForce(-dir * 8, ForceMode2D.Impulse);
+            rb.AddForce(-dir * 8, ForceMode2D.Impulse);
         }
+        
+
     }
 
     public void Damage()
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         Health--;
+        if (Health == 0)
+        {
+            Instantiate(DeadEffect,transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+            return;
+        }
         Vector3 dir = (AI.destination - transform.position).normalized;
         rb.AddForce(-dir*hitForce,ForceMode2D.Impulse);
         
